@@ -1,7 +1,7 @@
 import pytest
-from Python_courses.Lesson_2.Skai.Pages.contact_page import ContactPage
-from Python_courses.Lesson_2.Skai.Tests.data.Contact_page_data import Url
-from Python_courses.Lesson_2.Skai.Tests.locators.contact_page_locators import Fields_locators
+from Pages.contact_page import ContactPage
+from Tests.data.Contact_page_data import Url
+from Tests.locators.contact_page_locators import Fields_locators
 
 def test_submit_contact_form(driver):
     contact_page = ContactPage(driver, Fields_locators.url)

@@ -2,8 +2,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from faker import Faker
-from Python_courses.Lesson_2.Skai.Pages.Base_page import Base_page
-from Python_courses.Lesson_2.Skai.Tests.locators.contact_page_locators import Fields_locators,Button
+from Pages.Base_page import Base_page
+from Tests.locators.contact_page_locators import Fields_locators, Button
 
 
 fake = Faker()
