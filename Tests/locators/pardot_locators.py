@@ -16,3 +16,11 @@ class Contact_pardot:
     job_title_field = "//td[@class='key' and contains(text(), 'Job Title')]/following-sibling::td"
     country_field = "//td[@class='key' and contains(text(), 'Country')]/following-sibling::td"
     state_field = "//td[@class='key' and contains(text(), 'State')]/following-sibling::td"
+    channels = "//td[@class='key'][contains(a, 'Channels I am interested in')]/following-sibling::td[@class='value breakword']"
+    comment = "//td[@class='key'][contains(a, 'Comment')]/following-sibling::td[@class='value breakword']"
+    how_heard = "//td[@class='key'][contains(a, 'How Did You Hear About Us')]/following-sibling::td[@class='value breakword']"
+    m_dig_spend = "//td[@class='key'][contains(a, 'My current ad spend')]/following-sibling::td[@class='value breakword']"
+
+
+class Form_handler:
+    all_leads = "//span[@class='slds']/a[1]"

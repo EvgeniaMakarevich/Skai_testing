@@ -5,3 +5,7 @@ class Pardot_data:
       verification_code= ('297217')
       log_in_page = 'https://pi.pardot.com/home/index'
       form_handler_page = 'https://pi.pardot.com/formHandler'
+
+class Contact_page:
+      page_url = "/contact-us/"
+      gdpr= "Opt-In"

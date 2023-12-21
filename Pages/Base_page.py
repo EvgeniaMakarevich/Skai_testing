@@ -4,18 +4,18 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import random
 from faker import Faker
+import json
 
 class Base_page:
 
     def __init__(self, driver, url):
         self.driver = driver
         self.url = url
+        self.wait = WebDriverWait(self.driver, 10)
 
 
     def open(self):
         self.driver.get(self.url)
-
-
 
 
     def borlabs_banner_close(self):
@@ -53,6 +53,19 @@ class Base_page:
 
     def submit_form(self,button_locator):
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH,button_locator))).click()
+
+    def wait_until_clickable(self, locator):
+        return self.wait.until(EC.element_to_be_clickable(locator))
+
+    def wait_until_visible(self, locator):
+        return self.wait.until(EC.visibility_of_element_located(locator))
+
+
+
+
+
+
+
 
 
 
