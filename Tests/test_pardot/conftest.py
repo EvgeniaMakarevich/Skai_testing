@@ -8,13 +8,16 @@ from Tests.locators.pardot_locators import Pardot_locators
 from selenium.webdriver.support import expected_conditions as EC
 
 @pytest.fixture(scope='session')
+# @pytest.fixture(scope='function')
 def browser():
     browser = webdriver.Chrome()
+    browser.maximize_window()
     yield browser
     browser.quit()
 
 
-@pytest.fixture(scope='session',autouse=True)
+@pytest.fixture(scope='session')
+# @pytest.fixture(scope='function')
 def get_pardot(browser):
     browser.get(Pardot_data.pardot_main)
     WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, Pardot_locators.username))).send_keys(Pardot_data.username_data)

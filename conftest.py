@@ -1,16 +1,16 @@
 import pytest
 from selenium import webdriver
-import time
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from Tests.data.pardot_data import Pardot_data
-from Tests.locators.pardot_locators import Pardot_locators
-from selenium.webdriver.support import expected_conditions as EC
-
+from selenium.webdriver.chrome.options import Options
+# @pytest.fixture
+# def options():
+#     options = Options()
+#     options.add_argument('--window-size=2880,2800')
+#     return options
 
 @pytest.fixture(scope='function')
 def driver():
     driver = webdriver.Chrome()
+    driver.maximize_window()
     yield driver
     driver.quit()
 

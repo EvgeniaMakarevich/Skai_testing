@@ -1,10 +1,9 @@
-from selenium.webdriver.chrome import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import random
-from faker import Faker
-import json
+from Tests.locators.contact_page_locators import Button
+
 
 class Base_page:
 
@@ -20,7 +19,7 @@ class Base_page:
 
     def borlabs_banner_close(self):
         borlabs_button = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//a[@class='_brlbs-btn _brlbs-btn-accept-all _brlbs-cursor']"))
+            EC.element_to_be_clickable((By.XPATH, Button.borlabs))
         )
         borlabs_button.click()
 

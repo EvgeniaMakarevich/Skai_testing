@@ -11,7 +11,7 @@ class Contact_pardot:
     url_contact = 'https://pi.pardot.com/formHandler/read/id/3667'
     last_lead_link = "(//span[@class='slds']/a)[1]"
     name_field = "//td[@class = 'value breakword']"
-    email_field = "//span[@id = 'pr_prospect_email_link_293626302']/a"
+    email_field = "//td[@class='key' and contains(text(),'Email')]/following-sibling::td/span/a"
     company_field = "//td[@class='key' and contains(text(), 'Company')]/following-sibling::td/a"
     job_title_field = "//td[@class='key' and contains(text(), 'Job Title')]/following-sibling::td"
     country_field = "//td[@class='key' and contains(text(), 'Country')]/following-sibling::td"

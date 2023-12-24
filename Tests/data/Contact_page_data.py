@@ -1,6 +1,11 @@
 class Url:
     thankyou_page = 'https://skai.io/thankyou/'
+    url_contact_main = "https://skaistaging.wpengine.com/contact-us-new/"
 
 
 class Json_path:
-    contact_page = '/Pages/Pardot/json_data/entered_data_contact.json'
+    contact_page_main = '../../Pages/json/entered_data_contact.json'
+
+
+
+
