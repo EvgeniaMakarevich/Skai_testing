@@ -1,6 +1,6 @@
 from Tests.locators.contact_page_locators import Fields_locators
 from Pages.Forms.base_contact_page import ContactPage
-from Tests.data.Contact_page_data import Json_path
+from Tests.data.contact_page_data import Json_path
 import json
 import os
 import shutil
