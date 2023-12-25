@@ -1,4 +1,5 @@
 from Tests.locators.pardot_locators import Contact_pardot
+from Tests.data.sem_pages_data import Urls
 from Pages.Pardot.Base_pardot_contact import PardotBaseContact
 import json
 from Tests.data.sem_pages_data import Json_path
@@ -14,4 +15,5 @@ class PardotPaidSearch(PardotBaseContact):
     def compare_data_paid_search(self, driver):
         paid_search = PardotBaseContact(driver, Contact_pardot.url_contact)
         paid_search.compare_data(contact_data_paid_search)
+        paid_search.compare_page_url(Urls.paid_search_url)
 

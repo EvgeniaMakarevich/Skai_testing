@@ -59,6 +59,9 @@ class Base_page:
     def wait_until_visible(self, locator):
         return self.wait.until(EC.visibility_of_element_located(locator))
 
+    def select_checkbox(self, locator):
+        checkbox = self.driver.find_element(By.XPATH, locator).click()
+
 
 
 

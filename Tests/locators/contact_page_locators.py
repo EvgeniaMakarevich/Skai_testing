@@ -32,7 +32,7 @@ class Fields_locators:
 
 
 class Button:
-    button_contact_us = '//*[@id="pardot-form"]/div[15]/input'
+    button_contact_us = '//input[@class="form-submit"]'
     borlabs = "//a[@class='_brlbs-btn _brlbs-btn-accept-all _brlbs-cursor']"
 
 

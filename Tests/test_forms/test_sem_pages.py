@@ -1,6 +1,6 @@
 from Pages.Forms.sem_pages import SemPages
 from Tests.data.sem_pages_data import Urls
-from conftest import driver
+from conftest import driver, options
 from Tests.locators.contact_page_locators import Button
 
 

@@ -49,6 +49,9 @@ class PardotBaseContact(Base_page):
         m_dig_spend_pardot = self.driver.find_element(By.XPATH, Contact_pardot.m_dig_spend).text.strip()
         expected_m_dig_spend = contact_data['m_dig_spend']
 
+        gdpr_pardot = self.driver.find_element(By.XPATH, Contact_pardot.gdpr).text.strip()
+        expected_gdpr = 'Opt-In'
+
         assert name_pardot == expected_name, f"Name_pardot:{name_pardot},expected_name: {expected_name}"
         assert email_pardot == expected_email, f"Email_pardot:{email_pardot},expected_email: {expected_email}"
         assert company_pardot == expected_company, f"Company_pardot:{company_pardot},expected_company: {expected_company}"
@@ -59,3 +62,8 @@ class PardotBaseContact(Base_page):
         assert comment_pardot == expected_comment, f"Comment_pardot:{comment_pardot}, expected_comment: {expected_comment}"
         assert how_heard_pardot == expected_how_heard, f"How_heard_pardot:{how_heard_pardot}, expected_how_heard: {expected_how_heard}"
         assert m_dig_spend_pardot == expected_m_dig_spend, f"M_dig_spend_pardot:{m_dig_spend_pardot}, expected_m_dig_spend: {expected_m_dig_spend}"
+        assert gdpr_pardot == expected_gdpr, f"Gdpr_pardot:{gdpr_pardot}, expected_gdpr: {expected_gdpr}"
+
+    def compare_page_url(self, expected_url):
+        url_pardot = self.driver.find_element(By.XPATH, Contact_pardot.page_url).text.strip()
+        assert expected_url == url_pardot

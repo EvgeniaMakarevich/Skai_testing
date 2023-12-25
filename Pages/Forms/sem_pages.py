@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from Pages.Forms.base_contact_page import ContactPage
 from Tests.locators.contact_page_locators import Fields_locators
 from Tests.data.sem_pages_data import Json_path
+from Tests.locators.sem_pages_locators import Checkbox
 import time
 import json
 import os
@@ -30,6 +31,8 @@ class SemPages(ContactPage):
                        Fields_locators.questions,
                        Fields_locators.how_heard, Fields_locators.how_heard_options,
                        Fields_locators.selected_option_how_heard)
+
+        self.select_checkbox(Checkbox.checkbox)
 
         entered_data = self.get_entered_data()
         with open('entered_data_paid_social', 'w') as file:
@@ -63,6 +66,8 @@ class SemPages(ContactPage):
                        Fields_locators.how_heard, Fields_locators.how_heard_options,
                        Fields_locators.selected_option_how_heard)
 
+        self.select_checkbox(Checkbox.checkbox)
+
         entered_data = self.get_entered_data()
         with open('entered_data_paid_search', 'w') as file:
             json.dump(entered_data, file)
@@ -94,6 +99,9 @@ class SemPages(ContactPage):
                        Fields_locators.questions,
                        Fields_locators.how_heard, Fields_locators.how_heard_options,
                        Fields_locators.selected_option_how_heard)
+
+        self.select_checkbox(Checkbox.checkbox)
+
 
         entered_data = self.get_entered_data()
         with open('entered_data_retail_solution', 'w') as file:
@@ -127,6 +135,8 @@ class SemPages(ContactPage):
                        Fields_locators.questions,
                        Fields_locators.how_heard, Fields_locators.how_heard_options,
                        Fields_locators.selected_option_how_heard)
+
+        self.select_checkbox(Checkbox.checkbox)
 
         entered_data = self.get_entered_data()
         with open('entered_data_amazon_ads', 'w') as file:

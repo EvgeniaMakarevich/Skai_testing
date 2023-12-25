@@ -1,7 +1,7 @@
 from Pages.Forms.contact_page import ContactPageMain
 from Tests.data.contact_page_data import Url
 from Tests.locators.contact_page_locators import Fields_locators, Button
-from conftest import driver
+from conftest import driver, options
 
 
 def test_submit_contact_main(driver):
