@@ -2,6 +2,7 @@ from Pages.Forms.reports_pages import ReportsPages
 from Tests.data.reports_pages_data import Urls
 from conftest import driver, options
 from Tests.locators.contact_page_locators import Button
+from Tests.data.contact_page_data import Url
 
 
 class TestFillReportPages():
@@ -10,16 +11,14 @@ class TestFillReportPages():
         hidden_cost.open()
         hidden_cost.borlabs_banner_close()
         hidden_cost.fill_hidden_cost(driver)
-        # hidden_cos.submit_form(Button.button_contact_us)
-        # assert driver.current_url.startswith(Url.thankyou_page), 'Incorrect URL'
+        # hidden_cost.submit_form(Button.button_contact_us)
 
     def test_ai(self, driver):
         ai_report = ReportsPages(driver, Urls.ai_report)
         ai_report.open()
         ai_report.borlabs_banner_close()
         ai_report.fill_ai(driver)
-        # hidden_cos.submit_form(Button.button_contact_us)
-        # assert driver.current_url.startswith(Url.thankyou_page), 'Incorrect URL'
+        # ai_report.submit_form(Button.button_contact_us)
 
 
     def test_prime_day(self, driver):
@@ -27,8 +26,7 @@ class TestFillReportPages():
         prime_day.open()
         prime_day.borlabs_banner_close()
         prime_day.fill_prime_day(driver)
-        # hidden_cos.submit_form(Button.button_contact_us)
-        # assert driver.current_url.startswith(Url.thankyou_page), 'Incorrect URL'
+        # prime_day.submit_form(Button.button_contact_us)
 
 
     def test_amazon_playbook(self, driver):
@@ -36,8 +34,7 @@ class TestFillReportPages():
         amazon_playbook.open()
         amazon_playbook.borlabs_banner_close()
         amazon_playbook.fill_amazon_playbook(driver)
-        # hidden_cos.submit_form(Button.button_contact_us)
-        # assert driver.current_url.startswith(Url.thankyou_page), 'Incorrect URL'
+        # amazon_playbook.submit_form(Button.button_contact_us)
 
 
     def test_apple_ads(self, driver):
@@ -45,5 +42,4 @@ class TestFillReportPages():
         apple_ads.open()
         apple_ads.borlabs_banner_close()
         apple_ads.fill_apple_ads(driver)
-        # hidden_cos.submit_form(Button.button_contact_us)
-        # assert driver.current_url.startswith(Url.thankyou_page), 'Incorrect URL'
+        # apple_ads.submit_form(Button.button_contact_us)

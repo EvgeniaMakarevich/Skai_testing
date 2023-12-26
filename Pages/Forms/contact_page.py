@@ -1,13 +1,20 @@
+from selenium.webdriver.common.by import By
+
 from Tests.locators.contact_page_locators import Fields_locators
 from Pages.Forms.base_contact_page import ContactPage
 from Tests.data.contact_page_data import Json_path
 import json
 import os
 import shutil
+import time
 
 
 class ContactPageMain(ContactPage):
-    def fill_contact_main(self):
+    def fill_contact_main(self,driver):
+        element = driver.find_element(By.XPATH, Fields_locators.contact_form)
+        driver.execute_script("arguments[0].scrollIntoView();", element)
+        time.sleep(3)
+
         self.fill_form(Fields_locators.name_input,
                        Fields_locators.email_input,
                        Fields_locators.lastname_input,

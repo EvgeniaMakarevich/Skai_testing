@@ -15,5 +15,5 @@ class PardotPaidSearch(PardotBaseContact):
     def compare_data_paid_search(self, driver):
         paid_search = PardotBaseContact(driver, Contact_pardot.url_contact)
         paid_search.compare_data(contact_data_paid_search)
-        paid_search.compare_page_url(Urls.paid_search_url)
+        paid_search.compare_page_url(Contact_pardot.page_url, Urls.paid_search_url)
 

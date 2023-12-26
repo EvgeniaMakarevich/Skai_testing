@@ -2,6 +2,7 @@ from Pages.Forms.sem_pages import SemPages
 from Tests.data.sem_pages_data import Urls
 from conftest import driver, options
 from Tests.locators.contact_page_locators import Button
+from Tests.data.contact_page_data import Url
 
 
 class TestFillSemPages():
@@ -28,7 +29,7 @@ class TestFillSemPages():
         retail_solution.open()
         retail_solution.borlabs_banner_close()
         retail_solution.fill_sem_page_retail_solution(driver)
-        # paid_search.submit_form(Button.button_contact_us)
+        # retail_solution.submit_form(Button.button_contact_us)
         # assert driver.current_url.startswith(Url.thankyou_page), 'Incorrect URL'
 
 
@@ -37,6 +38,6 @@ class TestFillSemPages():
         amazon_ads.open()
         amazon_ads.borlabs_banner_close()
         amazon_ads.fill_sem_page_amazon_ads(driver)
-        # paid_search.submit_form(Button.button_contact_us)
+        # amazon_ads.submit_form(Button.button_contact_us)
         # assert driver.current_url.startswith(Url.thankyou_page), 'Incorrect URL'
 

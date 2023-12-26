@@ -62,7 +62,9 @@ class Base_page:
     def select_checkbox(self, locator):
         checkbox = self.driver.find_element(By.XPATH, locator).click()
 
-
+    def compare_page_url(self, pardot_url, expected_url):
+        url_pardot = self.driver.find_element(By.XPATH, pardot_url).text.strip()
+        assert expected_url == url_pardot, f"url_pardot: {url_pardot},expected_url: {expected_url}"
 
 
 

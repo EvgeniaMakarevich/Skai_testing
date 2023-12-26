@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from faker import Faker
@@ -23,8 +22,8 @@ class ContactPage(Base_page):
         self.entered_email = email
 
         last_name = fake.last_name()
-        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(last_name_locator)).send_keys('Test123')
-        self.entered_last_name = 'Test123'
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(last_name_locator)).send_keys(last_name)
+        self.entered_last_name = last_name
 
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(company_name_locator)).send_keys('Dizzain')
         self.entered_company_name = 'Dizzain'

@@ -15,4 +15,4 @@ class PardotAmazonAds(PardotBaseContact):
     def compare_data_amazon_ads(self, driver):
         amazon_ads = PardotBaseContact(driver, Contact_pardot.url_contact)
         amazon_ads.compare_data(contact_data_amazon_ads)
-        amazon_ads.compare_page_url(Urls.amazon_ads_url)
+        amazon_ads.compare_page_url(Contact_pardot.page_url, Urls.amazon_ads_url)

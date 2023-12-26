@@ -10,9 +10,11 @@ class Pardot_locators:
 class Contact_pardot:
     url_contact = 'https://pi.pardot.com/formHandler/read/id/3667'
     last_lead_link = "(//span[@class='slds']/a)[1]"
-    name_field = "//td[@class = 'value breakword']"
-    email_field = "//td[@class='key' and contains(text(),'Email')]/following-sibling::td/span/a"
-    company_field = "//td[@class='key' and contains(text(), 'Company')]/following-sibling::td/a"
+    name_field = "(//td[@class ='key' and contains(text(),'Name')]/following-sibling::td[@class ='value breakword'])[1]"
+    email_field = "//td[@class='key' and contains(text(),'Email')]/following-sibling::td/span"
+
+    # company_field = "//td[@class='key' and contains(text(), 'Company')]/following-sibling::td/a"
+    company_field = "//td[@class='key' and contains(text(), 'Company')]/following-sibling::td"
     job_title_field = "//td[@class='key' and contains(text(), 'Job Title')]/following-sibling::td"
     country_field = "//td[@class='key' and contains(text(), 'Country')]/following-sibling::td"
     state_field = "//td[@class='key' and contains(text(), 'State')]/following-sibling::td"
