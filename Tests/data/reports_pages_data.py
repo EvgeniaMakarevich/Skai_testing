@@ -35,4 +35,11 @@ class Urls:
     amazon_url = '/reports-and-whitepapers/amazon-marketing-cloud-playbook/'
     apple_ads_url = '/reports-and-whitepapers/apple-search-ads/'
 
+class ReportsNames():
+    prime_day = 'Get Prepped for Prime Day 2023'
+    ai = "Where Generative AI's First Areas of Innovation Will Impact Marketing"
+    amazon_playbook = 'Amazon Marketing Cloud Playbook'
+    apple_ads = 'Mastering Apple Search Ads'
+    hidden_cost = 'The Hidden Cost of Advertising Point Solutions'
+
 

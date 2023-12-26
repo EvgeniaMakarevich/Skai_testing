@@ -1,6 +1,7 @@
 from Tests.data.reports_pages_data import Urls
 from Tests.locators.pardot_locators import Contact_pardot
 from Pages.Pardot.reports_pages.base_reports_page import PardotBaseReport
+from Tests.data.reports_pages_data import ReportsNames
 import json
 from Tests.data.reports_pages_data import Json_path
 import os
@@ -16,3 +17,4 @@ class PardotAi(PardotBaseReport):
         ai_report = PardotBaseReport(driver, Urls.pardot_ai_form_handler)
         ai_report.compare_data(contact_data_ai)
         ai_report.compare_page_url(Contact_pardot.page_url, Urls.ai_url)
+        ai_report.compare_report_name(ReportsNames.ai)

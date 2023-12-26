@@ -1,6 +1,7 @@
 from Tests.data.reports_pages_data import Urls
 from Tests.locators.pardot_locators import Contact_pardot
 from Pages.Pardot.reports_pages.base_reports_page import PardotBaseReport
+from Tests.data.reports_pages_data import ReportsNames
 import json
 from Tests.data.reports_pages_data import Json_path
 import os
@@ -16,3 +17,4 @@ class PardotAppleAds(PardotBaseReport):
         apple_ads = PardotBaseReport(driver, Urls.pardot_apple_ads_form_handler)
         apple_ads.compare_data(contact_data_apple_ads)
         apple_ads.compare_page_url(Contact_pardot.page_url, Urls.apple_ads_url)
+        apple_ads.compare_report_name(ReportsNames.apple_ads)

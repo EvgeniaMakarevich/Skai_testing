@@ -1,6 +1,7 @@
 from Tests.data.reports_pages_data import Urls
 from Tests.locators.pardot_locators import Contact_pardot
 from Pages.Pardot.reports_pages.base_reports_page import PardotBaseReport
+from Tests.data.reports_pages_data import ReportsNames
 import json
 from Tests.data.reports_pages_data import Json_path
 import os
@@ -16,3 +17,4 @@ class PardotHiddenCost(PardotBaseReport):
         hidden_cost = PardotBaseReport(driver, Urls.pardot_hidden_cost_handler)
         hidden_cost.compare_data(contact_data_hidden_cost)
         hidden_cost.compare_page_url(Contact_pardot.page_url, Urls.hidden_cost_url)
+        hidden_cost.compare_report_name(ReportsNames.hidden_cost)

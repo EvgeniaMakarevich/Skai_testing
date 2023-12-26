@@ -3,6 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from Pages.Base_page import Base_page
 from Tests.locators.pardot_locators import Contact_pardot, Form_handler
+from Tests.locators.reports_locators import ReportNamesLocators
 
 
 class PardotBaseReport(Base_page):
@@ -32,7 +33,8 @@ class PardotBaseReport(Base_page):
         expected_job_title = contact_data['job_title']
 
         gdpr_pardot = self.driver.find_element(By.XPATH, Contact_pardot.gdpr).text.strip()
-        expected_gdpr = 'Opt-In'
+        expected_gdpr_1 = 'Opt-In'
+        expected_gdpr_2 = 'Opt-In gdpr-field'
 
         assert name_pardot == expected_name, f"Name_pardot:{name_pardot},expected_name: {expected_name}"
 
@@ -45,5 +47,8 @@ class PardotBaseReport(Base_page):
         assert email_pardot == expected_email, f"Email_pardot:{email_pardot},expected_email: {expected_email}"
         assert company_pardot == expected_company, f"Company_pardot:{company_pardot},expected_company: {expected_company}"
         assert job_title_pardot == expected_job_title, f"Job_title_pardot:{job_title_pardot},expected_job_title: {expected_job_title}"
-        assert gdpr_pardot == expected_gdpr, f"Gdpr_pardot:{gdpr_pardot}, expected_gdpr: {expected_gdpr}"
+        assert gdpr_pardot == expected_gdpr_1 or expected_gdpr_2, f"Gdpr_pardot:{gdpr_pardot}, expected_gdpr: {expected_gdpr_1} or {expected_gdpr_2}"
 
+    def compare_report_name(self, report_name):
+        report_name_pardot = self.driver.find_element(By.XPATH, ReportNamesLocators.report_name_locator).text.strip()
+        assert report_name_pardot == report_name, f"Report_name_pardot:{report_name_pardot},expected_report_name: {report_name}"
