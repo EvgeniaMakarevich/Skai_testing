@@ -13,7 +13,8 @@ class ContactPage(Base_page):
                   m_dig_spend_options,
                   m_dig_spend_soption, country_locator, country_option_usa, country_soptions, state_locator,
                   state_options,
-                  state_soption, text_c_locator, how_heard_locator, how_heard_options, how_heard_soption):
+                  state_soption, text_c_locator, how_heard_locator, how_heard_options, how_heard_soption,
+                  other_field_locator):
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(name_locator)).send_keys('Internal test')
         self.entered_name = 'Internal test'
 
@@ -51,9 +52,15 @@ class ContactPage(Base_page):
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(text_c_locator)).send_keys(text_c)
         self.entered_text_c = text_c
 
-        how_heard_option = self.select_random_option_from_dropdown(how_heard_locator, how_heard_options,
-                                                                   how_heard_soption)
+        # how_heard_option = self.select_random_option_from_dropdown(how_heard_locator, how_heard_options,
+        #                                                            how_heard_soption)
+        # self.entered_how_heard = how_heard_option
+        how_heard_option = self.select_exact_option(how_heard_locator, how_heard_options, how_heard_soption)
         self.entered_how_heard = how_heard_option
+
+        text_other = fake.text()
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(other_field_locator)).send_keys(text_other)
+        self.entered_text_other = text_other
 
     def get_entered_data(self):
         return {
@@ -67,7 +74,12 @@ class ContactPage(Base_page):
             'country': getattr(self, 'entered_country', None),
             'state': getattr(self, 'entered_state', None),
             'text_c': getattr(self, 'entered_text_c', None),
-            'how_heard': getattr(self, 'entered_how_heard', None)
+            'how_heard': getattr(self, 'entered_how_heard', None),
+            'other': getattr(self, 'entered_text_other', None)
         }
+
+
+
+
 
 

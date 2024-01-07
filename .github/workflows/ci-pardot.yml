@@ -1,0 +1,26 @@
+name: Run Tests on Code Change
+
+on:
+  push:
+    paths:
+      - 'Tests/data/pardot_data'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run tests if verification_code changed
+        run: |
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'Tests/data/pardot_data'
+          if [ $? -eq 0 ]; then
+            cd Tests/test_pardot
+            # Здесь выполните команду для запуска тестов
+            # Например:
+            pytest -s -v
+          else
+            echo "No changes in Tests/data/pardot_data"
+          fi

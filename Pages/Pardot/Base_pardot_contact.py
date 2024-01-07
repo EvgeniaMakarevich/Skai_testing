@@ -50,6 +50,9 @@ class PardotBaseContact(Base_page):
         m_dig_spend_pardot = self.driver.find_element(By.XPATH, Contact_pardot.m_dig_spend).text.strip()
         expected_m_dig_spend = contact_data['m_dig_spend']
 
+        other_pardot = self.driver.find_element(By.XPATH, Contact_pardot.other).text.strip()
+        expected_other_pardot = contact_data['other']
+
         gdpr_pardot = self.driver.find_element(By.XPATH, Contact_pardot.gdpr).text.strip()
         expected_gdpr_1 = 'Opt-In'
         expected_gdpr_2 = 'Opt-In gdpr-field'
@@ -76,4 +79,5 @@ class PardotBaseContact(Base_page):
         if '-' in channels_pardot or '–' in channels_pardot:
             channels_pardot = channels_pardot.replace('-', '–')
         assert channels_pardot == expected_channels, f"Channels_pardot:{channels_pardot}, expected_channels: {expected_channels}"
+        assert other_pardot == expected_other_pardot, f"Other_pardot:{other_pardot}, expected_other_pardot: {expected_other_pardot}"
 

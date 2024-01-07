@@ -6,6 +6,7 @@ class Url:
 
 class Json_path:
     contact_page_main = '../../Pages/json/entered_data_contact.json'
+    contact_page_other = '../../Pages/json/entered_data_contact_other.json'
 
 
 

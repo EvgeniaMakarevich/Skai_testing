@@ -34,3 +34,5 @@ class BaseReportPage(Base_page):
             'company_name': getattr(self, 'entered_company_name', None),
             'job_title': getattr(self, 'entered_job_title', None),
         }
+
+

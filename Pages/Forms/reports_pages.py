@@ -11,8 +11,9 @@ import shutil
 
 class ReportsPages(BaseReportPage):
     def fill_hidden_cost(self, driver):
-        element = driver.find_element(By.XPATH, Fields_locators.contact_form)
-        driver.execute_script("arguments[0].scrollIntoView();", element)
+        # element = driver.find_element(By.XPATH, Fields_locators.contact_form)
+        # driver.execute_script("arguments[0].scrollIntoView();", element)
+        self.scroll_to_element(Fields_locators.contact_form)
 
         time.sleep(2)
 
@@ -33,8 +34,9 @@ class ReportsPages(BaseReportPage):
         shutil.move('entered_data_hidden_cost_report', destination_directory)
 
     def fill_ai(self, driver):
-        element = driver.find_element(By.XPATH, Fields_locators.contact_form)
-        driver.execute_script("arguments[0].scrollIntoView();", element)
+        # element = driver.find_element(By.XPATH, Fields_locators.contact_form)
+        # driver.execute_script("arguments[0].scrollIntoView();", element)
+        self.scroll_to_element(Fields_locators.contact_form)
 
         time.sleep(2)
 
@@ -55,8 +57,9 @@ class ReportsPages(BaseReportPage):
         shutil.move('entered_data_ai_report', destination_directory)
 
     def fill_prime_day(self, driver):
-        element = driver.find_element(By.XPATH, Fields_locators.contact_form)
-        driver.execute_script("arguments[0].scrollIntoView();", element)
+        # element = driver.find_element(By.XPATH, Fields_locators.contact_form)
+        # driver.execute_script("arguments[0].scrollIntoView();", element)
+        self.scroll_to_element(Fields_locators.contact_form)
 
         time.sleep(2)
 
@@ -78,8 +81,9 @@ class ReportsPages(BaseReportPage):
 
 
     def fill_amazon_playbook(self, driver):
-        element = driver.find_element(By.XPATH, Fields_locators.contact_form)
-        driver.execute_script("arguments[0].scrollIntoView();", element)
+        # element = driver.find_element(By.XPATH, Fields_locators.contact_form)
+        # driver.execute_script("arguments[0].scrollIntoView();", element)
+        self.scroll_to_element(Fields_locators.contact_form)
 
         time.sleep(2)
 
@@ -101,8 +105,9 @@ class ReportsPages(BaseReportPage):
 
 
     def fill_apple_ads(self, driver):
-        element = driver.find_element(By.XPATH, Fields_locators.contact_form)
-        driver.execute_script("arguments[0].scrollIntoView();", element)
+        # element = driver.find_element(By.XPATH, Fields_locators.contact_form)
+        # driver.execute_script("arguments[0].scrollIntoView();", element)
+        self.scroll_to_element(Fields_locators.contact_form)
 
         time.sleep(2)
 

@@ -23,6 +23,7 @@ class Contact_pardot:
     how_heard = "//td[@class='key'][contains(a, 'How Did You Hear About Us')]/following-sibling::td[@class='value breakword']"
     m_dig_spend = "//td[@class='key'][contains(a, 'My current ad spend')]/following-sibling::td[@class='value breakword']"
     gdpr = "//td[@class='key'][a[text()='GDPR']]/following-sibling::td[@class='value breakword']"
+    other = "//td[@class='key'][a[text()='Other (Please Specify)']]/following-sibling::td[@class='value breakword']"
     page_url = "//td[@class='key'][a[text()='Page Url']]/following-sibling::td[@class='value breakword']"
 
 
