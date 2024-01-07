@@ -22,7 +22,8 @@ jobs:
             echo "Changes detected in Tests/data/pardot_data. Running tests..."
             # Здесь выполните команду для запуска тестов
             # Например:
-            cd Tests/test_pardot
+#            cd Tests/test_pardot
+            cd $GITHUB_WORKSPACE/Tests/test_pardot
             pytest 
           else
             echo "No changes in Tests/data/pardot_data"
