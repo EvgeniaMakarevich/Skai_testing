@@ -14,7 +14,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Run tests if verification_code changed
         run: |
           git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'Tests/data/pardot_data'
@@ -22,7 +21,7 @@ jobs:
             echo "Changes detected in Tests/data/pardot_data. Running tests..."
             # Здесь выполните команду для запуска тестов
             # Например:
-#            cd Tests/test_pardot
+#           cd Tests/test_pardot
             cd $GITHUB_WORKSPACE/Tests/test_pardot
             pytest 
           else
