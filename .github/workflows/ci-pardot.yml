@@ -23,7 +23,7 @@ jobs:
             # Здесь выполните команду для запуска тестов
             # Например:
             cd Tests/test_pardot
-            pytest -s -v
+            pytest 
           else
             echo "No changes in Tests/data/pardot_data"
           fi
