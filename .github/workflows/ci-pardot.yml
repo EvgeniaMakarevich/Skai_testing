@@ -16,11 +16,11 @@ jobs:
         uses: actions/checkout@v4
       - name: Run tests if verification_code changed
         run: |
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'Tests/data/pardot_data'
-          if [ $? -eq 0 ]; then
-            echo "Changes detected in Tests/data/pardot_data. Running tests..."
+#          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'Tests/data/pardot_data'
+#          if [ $? -eq 0 ]; then
+#            echo "Changes detected in Tests/data/pardot_data. Running tests..."
             cd $GITHUB_WORKSPACE/Tests/test_pardot
             pytest 
-          else
-            echo "No changes in Tests/data/pardot_data"
-          fi
+#          else
+#            echo "No changes in Tests/data/pardot_data"
+#          fi
