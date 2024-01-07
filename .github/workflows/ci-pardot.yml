@@ -2,6 +2,8 @@ name: Run Tests on Code Change
 
 on:
   push:
+    branches:
+      - Develop
     paths:
       - 'Tests/data/pardot_data'
 
