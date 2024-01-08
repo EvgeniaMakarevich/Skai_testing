@@ -37,12 +37,18 @@ class ContactPageMain(ContactPage):
                        # Fields_locators.selected_option_how_heard)
 
         entered_data = self.get_entered_data()
+        current_directory = os.getcwd()
+
+        entered_data_path = os.path.join(current_directory, 'entered_data_contact.json')
+
         with open('entered_data_contact.json', 'w') as file:
             json.dump(entered_data, file)
 
-        current_directory = os.path.dirname(os.path.abspath(__file__))
+        # current_directory = os.path.dirname(os.path.abspath(__file__))
         destination_directory = os.path.join(current_directory, Json_path.contact_page_main)
-        shutil.move('entered_data_contact.json', destination_directory)
+        shutil.move(entered_data_path, destination_directory)
+
+        # shutil.move('entered_data_contact.json', destination_directory)
 
 
 

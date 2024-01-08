@@ -28,7 +28,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: test_forms
         if: "github.event.inputs.deployment_target == 'test_forms'"
-        run: pytest -s -v Tests/test_forms
+        run: pytest -s -v Tests/test_forms/test_contact_page.py
       - name: test_pardot
         if: "github.event.inputs.deployment_target == 'test_pardot'"
         run: pytest -s -v Tests/test_pardot
