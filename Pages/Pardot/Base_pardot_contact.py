@@ -3,14 +3,20 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from Pages.Base_page import Base_page
 from Tests.locators.pardot_locators import Contact_pardot, Form_handler
+import time
 
 
 class PardotBaseContact(Base_page):
     def compare_data(self, contact_data):
         self.open()
 
+
+
         leads = WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_all_elements_located((By.XPATH, Form_handler.all_leads)))
+            EC.presence_of_all_elements_located((By.XPATH, Form_handler.all_leads)))
+        self.scroll_to_element(Form_handler.all_leads)
+        time.sleep(3)
+
 
         entered_name = f"{contact_data['name']} {contact_data['last_name']}"
 
