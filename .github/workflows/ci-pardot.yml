@@ -13,26 +13,20 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Install python
+        uses: actions/checkout@v3
+      - name: setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-
-      - name: Install requirements
-        run: |
-          pip install -r requirements.txt
       - name: Install Chrome
-        run: |
-          sudo apt update
-          sudo apt install -y chromium-browser 
-
-      - name: Install ChromeDriver
-        run: |
-          LATEST_CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE")
-          curl -o /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/$LATEST_CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
-          sudo unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
-
+        run: sudo apt-get install google-chrome-stable
+      - name: Install requirements
+        run: pip install -r requirements.txt
+#      - name: Install ChromeDriver
+#        run: |
+#          LATEST_CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE")
+#          curl -o /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/$LATEST_CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
+#          sudo unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
       - name: Run tests if verification_code changed
         run: |
           cd Tests/test_pardot

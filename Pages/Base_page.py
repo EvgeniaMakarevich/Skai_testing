@@ -3,6 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import random
 from Tests.locators.contact_page_locators import Button
+import time
 
 
 class Base_page:
@@ -39,10 +40,16 @@ class Base_page:
         dropdown = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable(dropdown_locator)).click()
         option = WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_element_located((By.XPATH, option_locator))).click()
+            EC.presence_of_element_located((By.XPATH, option_locator))).click()
+
+        # self.driver.execute_script("window.scrollBy(0, 200);")
+        # time.sleep(3)
+        # option = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, option_locator)))
+        # option.click()
 
         selected_option = WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_element_located((By.XPATH, selected_option_locator))).text
+            EC.presence_of_element_located((By.XPATH, selected_option_locator))).text
+        # EC.visibility_of_element_located((By.XPATH, selected_option_locator))).text
         return selected_option
 
     def submit_form(self, button_locator):
