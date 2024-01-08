@@ -32,13 +32,21 @@ jobs:
       - name: test_pardot
         if: "github.event.inputs.deployment_target == 'test_pardot'"
         run: pytest -s -v Tests/test_pardot
+
+      - name: Commit JSON data changes
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          
+          git add . # Добавление всех изменений в репозиторий
+          git commit -m "Update JSON data from tests" # Коммит изменений
+          git push origin main # Пуш изменений в ветку main (замените на вашу основную ветку)
       - name: Debug current directory and permissions
         run: |
           pwd
           ls -l
           ls -l ../../Pages/json/
-      - name: Set permissions for writing to directory
-        run: chmod -R 777 ../../Pages/json/
+      
 
         
           
