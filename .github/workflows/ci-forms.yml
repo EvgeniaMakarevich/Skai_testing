@@ -40,7 +40,7 @@ jobs:
           
           git add . # Добавление всех изменений в репозиторий
           git commit -m "Update JSON data from tests" # Коммит изменений
-          git push origin master # Пуш изменений в ветку main (замените на вашу основную ветку)
+          git push -u origin master # Пуш изменений в ветку main (замените на вашу основную ветку)
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: Debug current directory and permissions
