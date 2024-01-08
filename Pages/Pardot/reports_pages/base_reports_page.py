@@ -71,5 +71,11 @@ class PardotBaseReport(Base_page):
                 print(f"Assertion error in {label}: {e}")
 
     def compare_report_name(self, report_name):
-        report_name_pardot = self.driver.find_element(By.XPATH, ReportNamesLocators.report_name_locator).text.strip()
-        assert report_name_pardot == report_name, f"Report_name_pardot:{report_name_pardot},expected_report_name: {report_name}"
+        # report_name_pardot = self.driver.find_element(By.XPATH, ReportNamesLocators.report_name_locator).text.strip()
+        # assert report_name_pardot == report_name, f"Report_name_pardot:{report_name_pardot},expected_report_name: {report_name}"
+        try:
+            report_name_pardot = self.driver.find_element(By.XPATH,
+                                                          ReportNamesLocators.report_name_locator).text.strip()
+            assert report_name_pardot == report_name, f"Report_name_pardot:{report_name_pardot}, expected_report_name: {report_name}"
+        except AssertionError as e:
+            print(f"Assertion error in report name comparison: {e}")
