@@ -5,7 +5,7 @@ on:
     branches:
       - Develop
     paths:
-      - 'Tests/data/pardot_data'
+      - 'Tests/data/pardot_data.py'
 
 jobs:
   test:
