@@ -35,11 +35,21 @@ class Urls:
     amazon_url = '/reports-and-whitepapers/amazon-marketing-cloud-playbook/'
     apple_ads_url = '/reports-and-whitepapers/apple-search-ads/'
 
-class ReportsNames():
+class ReportsNames:
     prime_day = 'Get Prepped for Prime Day 2023'
     ai = "Where Generative AI's First Areas of Innovation Will Impact Marketing"
     amazon_playbook = 'Amazon Marketing Cloud Playbook'
     apple_ads = 'Mastering Apple Search Ads'
     hidden_cost = 'The Hidden Cost of Advertising Point Solutions'
+
+
+class Resource_download_urls:
+    hidden_cost = 'https://skai.io/wp-content/uploads/2023/07/The-Hidden-Cost-of-Advertising-Point-Solutions.pdf'
+    ai ='https://skai.io/wp-content/uploads/2023/06/Skai-Media-Brief-Embracing-Generative-AI-by-Guy-Cohen.pdf'
+    prime_day = 'https://skai.io/wp-content/uploads/2023/06/Skai_Prime-Day-2023-Report.pdf'
+    amazon_playbook = 'https://skai.io/wp-content/uploads/2023/06/Amazon-Marketing-Cloud_Playbook.pdf'
+    apple_ads = 'https://skai.io/wp-content/uploads/2021/03/Mastering-Apple-Search-Ads.pdf'
+
+
 
 

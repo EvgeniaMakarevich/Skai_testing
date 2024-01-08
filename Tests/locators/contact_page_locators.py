@@ -14,6 +14,7 @@ class Fields_locators:
     state = (By.XPATH, "//button[@data-id ='pardot-form-state']")
     questions = (By.XPATH, '//*[@id="pardot-form-comments"]')
     how_heard = (By.XPATH, "//button[@data-id = 'pardot-form-How_Did_You_Hear_About_Us']")
+    how_heard_field_other = (By.XPATH, '//*[@id="pardot-form-How_Did_You_Hear_About_Us_Other"]')
 
     # dropdown_options
     area_of_int_pot_options = "//button[@data-id ='pardot-form-channels']/following-sibling::div/ul/li/a/span[1]"
@@ -21,6 +22,7 @@ class Fields_locators:
     country_option_usa = "//button[@data-id ='pardot-form-country']/following-sibling::div/ul/li[2]/a/span[1]"
     state_options = "//button[@data-id ='pardot-form-state']/following-sibling::div/ul/li/a/span[1]"
     how_heard_options = "//button[@data-id ='pardot-form-How_Did_You_Hear_About_Us']/following-sibling::div/ul/li/a/span[1]"
+    how_heard_option_other = '//button[@data-id="pardot-form-How_Did_You_Hear_About_Us"]/following-sibling::div/ul/li[@data-original-index="9"]'
 
 
     # selected_options

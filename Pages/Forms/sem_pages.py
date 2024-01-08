@@ -11,8 +11,9 @@ import shutil
 
 class SemPages(ContactPage):
     def fill_sem_page_paid_social(self, driver):
-        element = driver.find_element(By.XPATH, Fields_locators.contact_form)
-        driver.execute_script("arguments[0].scrollIntoView();", element)
+        # element = driver.find_element(By.XPATH, Fields_locators.contact_form)
+        # driver.execute_script("arguments[0].scrollIntoView();", element)
+        self.scroll_to_element(Fields_locators.contact_form)
 
         time.sleep(2)
 
@@ -29,7 +30,10 @@ class SemPages(ContactPage):
                        Fields_locators.selected_option_country,
                        Fields_locators.state, Fields_locators.state_options, Fields_locators.selected_option_state,
                        Fields_locators.questions,
-                       Fields_locators.how_heard, Fields_locators.how_heard_options,
+                       # Fields_locators.how_heard, Fields_locators.how_heard_option_other,
+                       # Fields_locators.selected_option_how_heard, Fields_locators.how_heard_field_other)
+                       Fields_locators.how_heard,
+                       Fields_locators.how_heard_options,
                        Fields_locators.selected_option_how_heard)
 
         self.select_checkbox(Checkbox.checkbox)
@@ -45,8 +49,9 @@ class SemPages(ContactPage):
 
 
     def fill_sem_page_paid_search(self, driver):
-        element = driver.find_element(By.XPATH, Fields_locators.contact_form)
-        driver.execute_script("arguments[0].scrollIntoView();", element)
+        # element = driver.find_element(By.XPATH, Fields_locators.contact_form)
+        # driver.execute_script("arguments[0].scrollIntoView();", element)
+        self.scroll_to_element(Fields_locators.contact_form)
 
         time.sleep(2)
 
@@ -64,7 +69,8 @@ class SemPages(ContactPage):
                        Fields_locators.state, Fields_locators.state_options, Fields_locators.selected_option_state,
                        Fields_locators.questions,
                        Fields_locators.how_heard, Fields_locators.how_heard_options,
-                       Fields_locators.selected_option_how_heard)
+                       Fields_locators.how_heard_option_other, Fields_locators.how_heard_field_other)
+                       # Fields_locators.selected_option_how_heard)
 
         self.select_checkbox(Checkbox.checkbox)
 
@@ -79,8 +85,9 @@ class SemPages(ContactPage):
 
 
     def fill_sem_page_retail_solution(self, driver):
-        element = driver.find_element(By.XPATH, Fields_locators.contact_form)
-        driver.execute_script("arguments[0].scrollIntoView();", element)
+        # element = driver.find_element(By.XPATH, Fields_locators.contact_form)
+        # driver.execute_script("arguments[0].scrollIntoView();", element)
+        self.scroll_to_element(Fields_locators.contact_form)
 
         time.sleep(2)
 
@@ -98,7 +105,8 @@ class SemPages(ContactPage):
                        Fields_locators.state, Fields_locators.state_options, Fields_locators.selected_option_state,
                        Fields_locators.questions,
                        Fields_locators.how_heard, Fields_locators.how_heard_options,
-                       Fields_locators.selected_option_how_heard)
+                       Fields_locators.how_heard_option_other, Fields_locators.how_heard_field_other)
+                       # Fields_locators.selected_option_how_heard)
 
         self.select_checkbox(Checkbox.checkbox)
 
@@ -115,8 +123,9 @@ class SemPages(ContactPage):
 
 
     def fill_sem_page_amazon_ads(self, driver):
-        element = driver.find_element(By.XPATH, Fields_locators.contact_form)
-        driver.execute_script("arguments[0].scrollIntoView();", element)
+        # element = driver.find_element(By.XPATH, Fields_locators.contact_form)
+        # driver.execute_script("arguments[0].scrollIntoView();", element)
+        self.scroll_to_element(Fields_locators.contact_form)
 
         time.sleep(2)
 
@@ -134,7 +143,8 @@ class SemPages(ContactPage):
                        Fields_locators.state, Fields_locators.state_options, Fields_locators.selected_option_state,
                        Fields_locators.questions,
                        Fields_locators.how_heard, Fields_locators.how_heard_options,
-                       Fields_locators.selected_option_how_heard)
+                       Fields_locators.how_heard_option_other, Fields_locators.how_heard_field_other)
+                       # Fields_locators.selected_option_how_heard)
 
         self.select_checkbox(Checkbox.checkbox)
 

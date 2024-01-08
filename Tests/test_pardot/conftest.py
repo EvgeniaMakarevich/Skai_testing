@@ -6,11 +6,18 @@ from selenium.webdriver.support.wait import WebDriverWait
 from Tests.data.pardot_data import Pardot_data
 from Tests.locators.pardot_locators import Pardot_locators
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
+
 
 @pytest.fixture(scope='session')
-# @pytest.fixture(scope='function')
-def browser():
-    browser = webdriver.Chrome()
+def options():
+    options = Options()
+    options.add_argument('--headless')
+    return options
+
+@pytest.fixture(scope='session')
+def browser(options):
+    browser = webdriver.Chrome(options=options)
     browser.maximize_window()
     yield browser
     browser.quit()
