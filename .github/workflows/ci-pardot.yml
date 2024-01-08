@@ -1,4 +1,4 @@
-name: Run Tests on Code Change
+name: Run Tests on Pardot
 
 on:
   push:
