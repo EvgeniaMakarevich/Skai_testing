@@ -30,11 +30,11 @@ class ContactPageMain(ContactPage):
                        Fields_locators.state, Fields_locators.state_options, Fields_locators.selected_option_state,
                        Fields_locators.questions,
 
-                       # Fields_locators.how_heard, Fields_locators.how_heard_option_other,
-                       # Fields_locators.selected_option_how_heard, Fields_locators.how_heard_field_other)
-                       Fields_locators.how_heard,
-                       Fields_locators.how_heard_options,
-                       Fields_locators.selected_option_how_heard)
+                       Fields_locators.how_heard, Fields_locators.how_heard_option_other,
+                       Fields_locators.selected_option_how_heard, Fields_locators.how_heard_field_other)
+                       # Fields_locators.how_heard,
+                       # Fields_locators.how_heard_options,
+                       # Fields_locators.selected_option_how_heard)
 
         entered_data = self.get_entered_data()
         with open('entered_data_contact.json', 'w') as file:

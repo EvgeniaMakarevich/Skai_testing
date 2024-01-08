@@ -21,7 +21,8 @@ class Fields_locators:
     m_dig_spend_options = "//button[@data-id ='pardot-form-ad_spend']/following-sibling::div/ul/li/a/span[1]"
     country_option_usa = "//button[@data-id ='pardot-form-country']/following-sibling::div/ul/li[2]/a/span[1]"
     state_options = "//button[@data-id ='pardot-form-state']/following-sibling::div/ul/li/a/span[1]"
-    how_heard_options = "//button[@data-id ='pardot-form-How_Did_You_Hear_About_Us']/following-sibling::div/ul/li/a/span[1]"
+    # how_heard_options = "//button[@data-id ='pardot-form-How_Did_You_Hear_About_Us']/following-sibling::div/ul/li/a/span[1]"
+    how_heard_options = "//button[@data-id ='pardot-form-How_Did_You_Hear_About_Us']/following-sibling::div/ul/li/a"
     how_heard_option_other = '//button[@data-id="pardot-form-How_Did_You_Hear_About_Us"]/following-sibling::div/ul/li[@data-original-index="9"]'
 
 
@@ -35,6 +36,7 @@ class Fields_locators:
 
 class Button:
     button_contact_us = '//input[@class="form-submit"]'
-    borlabs = "//a[@class='_brlbs-btn _brlbs-btn-accept-all _brlbs-cursor']"
+    # borlabs = "//a[@class='_brlbs-btn _brlbs-btn-accept-all _brlbs-cursor']"
+    borlabs = '//*[@id="BorlabsCookieBox"]/div/div/div/div[1]/div/div/div[2]/p[3]/a'
 
 

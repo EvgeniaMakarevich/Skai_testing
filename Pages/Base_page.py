@@ -32,6 +32,7 @@ class Base_page:
 
         random_index = random.randint(1, len(options) - 1)
         options[random_index].click()
+        # options[1].click()
         selected_option = WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, selected_option_locator))).text
         return selected_option

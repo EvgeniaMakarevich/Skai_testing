@@ -7,6 +7,7 @@ from conftest import driver, options
 def test_submit_contact_main(driver):
     contact_page = ContactPageMain(driver, Url.url_contact_main)
     contact_page.open()
+    driver.set_window_size(1920, 1080)
     contact_page.borlabs_banner_close()
     contact_page.fill_contact_main(driver)
     # contact_page.submit_form(Button.button_contact_us)

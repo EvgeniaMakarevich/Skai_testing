@@ -6,4 +6,5 @@ from Tests.locators.pardot_locators import Contact_pardot
 def test_contact_page(get_pardot):
     driver = get_pardot
     pardot = PardotContactPage(driver, Contact_pardot.url_contact)
+    driver.set_window_size(1920, 1080)
     pardot.compare_data_contact_page(driver)
