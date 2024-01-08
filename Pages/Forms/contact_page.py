@@ -36,22 +36,42 @@ class ContactPageMain(ContactPage):
                        # Fields_locators.how_heard_options,
                        # Fields_locators.selected_option_how_heard)
 
+        # entered_data = self.get_entered_data()
+        # # current_directory = os.getcwd()
+        #
+        # # entered_data_path = os.path.join(current_directory, 'entered_data_contact.json')
+        #
+        # with open('entered_data_contact.json', 'w') as file:
+        #     json.dump(entered_data, file)
+        #
+        # current_directory = os.path.dirname(os.path.abspath(__file__))
+        # destination_directory = os.path.abspath(os.path.join(current_directory, '../../Pages/json/'))
+        #
+        # # destination_directory = os.path.join(current_directory, Json_path.contact_page_main)
+        # # shutil.move(entered_data_path, destination_directory)
+        # source_file_path = os.path.join(current_directory, 'entered_data_contact.json')
+        # shutil.move(source_file_path, destination_directory)
+        # # shutil.move('entered_data_contact.json', destination_directory)
+
+        # Определяем путь к файлу с данными
+        source_file_path = 'entered_data_contact.json'
+
+        # Получаем данные
         entered_data = self.get_entered_data()
-        # current_directory = os.getcwd()
 
-        # entered_data_path = os.path.join(current_directory, 'entered_data_contact.json')
-
-        with open('entered_data_contact.json', 'w') as file:
+        # Записываем данные в файл entered_data_contact.json
+        with open(source_file_path, 'w') as file:
             json.dump(entered_data, file)
 
+        # Определяем путь к директории назначения
         current_directory = os.path.dirname(os.path.abspath(__file__))
         destination_directory = os.path.abspath(os.path.join(current_directory, '../../Pages/json/'))
 
-        # destination_directory = os.path.join(current_directory, Json_path.contact_page_main)
-        # shutil.move(entered_data_path, destination_directory)
-        source_file_path = os.path.join(current_directory, 'entered_data_contact.json')
-        shutil.move(source_file_path, destination_directory)
-        # shutil.move('entered_data_contact.json', destination_directory)
+        # Определяем полный путь к файлу в директории назначения
+        destination_file_path = os.path.join(destination_directory, 'entered_data_contact.json')
+
+        # Копируем файл с данными в директорию назначения
+        shutil.copy(source_file_path, destination_file_path)
 
 
 
