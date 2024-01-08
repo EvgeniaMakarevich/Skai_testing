@@ -14,7 +14,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: github.event.inputs.deployment_target && github.ref == 'refs/heads/develop'
 
     steps:
       - name: Checkout repository

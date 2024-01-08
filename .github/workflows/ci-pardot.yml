@@ -3,7 +3,7 @@ name: Run Tests on Pardot
 on:
   push:
     branches:
-      - Develop
+      - main
     paths:
       - 'Tests/data/pardot_data.py'
 
