@@ -2,6 +2,15 @@ name: Run Tests on Filling Forms
 
 on:
   workflow_dispatch:
+    inputs:
+      deployment_target:
+        description: Choose target
+        required: true
+        default:
+        type: choice
+        options:
+          - test_forms
+          - test_pardot
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -17,7 +26,15 @@ jobs:
         run: sudo apt-get install google-chrome-stable
       - name: Install requirements
         run: pip install -r requirements.txt
-      - name: Run tests on Filling forms
+      - name: test_forms
+        if: "github.event.inputs.deployment_target == 'test_forms'"
         run: |
           cd Tests/test_forms
           pytest -s -v
+      - name: test_pardot
+        if: "github.event.inputs.deployment_target == 'test_pardot'"
+        run: |
+          cd Tests/test_pardot
+          pytest -s -v
+        
+          
