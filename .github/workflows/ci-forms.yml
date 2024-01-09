@@ -35,8 +35,8 @@ jobs:
 
       - name: Commit JSON data changes
         run: |
-          git config --global user.email "githubactions@gmail.com"
-          git config --global user.name "GitHub"
+          git config --local user.email "githubactions@gmail.com"
+          git config --local user.name "GitHub"
           
           git add . 
           git commit -m "Update JSON data from tests" 
