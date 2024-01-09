@@ -2,8 +2,6 @@ name: Run Tests on Pardot
 
 on:
   push:
-#    branches:
-#      - main
     paths:
       - 'Tests/data/pardot_data.py'
 
@@ -22,14 +20,15 @@ jobs:
         run: sudo apt-get install google-chrome-stable
       - name: Install requirements
         run: pip install -r requirements.txt
-#      - name: Install ChromeDriver
-#        run: |
-#          LATEST_CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE")
-#          curl -o /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/$LATEST_CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
-#          sudo unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
-      - name: Run tests if verification_code changed
-#        run: |
-#          cd Tests/test_pardot/test_reports_pardot.py
-#          pytest -s -v
+
+      - name: Run tests Contact Page
+        run: |
+          pytest -s -v Tests/test_pardot/test_contact_pardot.py
+
+      - name: Run tests Sem Pages
         run: |
           pytest -s -v Tests/test_pardot/test_sem_pardot.py
+
+      - name: Run tests Report Pages
+        run: |
+          pytest -s -v Tests/test_pardot/test_reports_pardot.py
