@@ -34,12 +34,6 @@ on:
 #        run: |
 #          pytest -s -v Tests/test_pardot/test_reports_pardot.py
 
-name: Run Tests on Pardot
-
-on:
-  push:
-    paths:
-      - 'Tests/data/pardot_data.py'
 
 jobs:
   setup_environment:
