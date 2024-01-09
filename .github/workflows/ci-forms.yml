@@ -1,5 +1,50 @@
 name: Run Tests on Filling Forms
 
+#on:
+#  workflow_dispatch:
+#    inputs:
+#      deployment_target:
+#        description: Choose target
+#        required: true
+#        default: test_forms
+#        type: choice
+#        options:
+#          - test_forms
+#          - test_pardot
+#jobs:
+#  test:
+#    runs-on: ubuntu-latest
+#    timeout-minutes: 20
+#
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v3
+#      - name: setup Python
+#        uses: actions/setup-python@v4
+#        with:
+#          python-version: '3.11'
+#      - name: Install Chrome
+#        run: sudo apt-get install google-chrome-stable
+#      - name: Install requirements
+#        run: pip install -r requirements.txt
+#      - name: test_forms
+#        if: "github.event.inputs.deployment_target == 'test_forms'"
+#        run: pytest -s -v Tests/test_forms
+#      - name: test_pardot
+#        if: "github.event.inputs.deployment_target == 'test_pardot'"
+#        run: pytest -s -v Tests/test_pardot
+#
+#      - name: Commit JSON data changes
+#        run: |
+#          git config --local user.email "githubactions@gmail.com"
+#          git config --local user.name "GitHub"
+#
+#          git add .
+#          git commit -m "Update JSON data from tests"
+#          git push origin master
+
+
+
 on:
   workflow_dispatch:
     inputs:
@@ -7,12 +52,9 @@ on:
         description: Choose target
         required: true
         default: test_forms
-        type: choice
-        options:
-          - test_forms
-          - test_pardot
+        type: string
 jobs:
-  test:
+  Fill_contact_form:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
@@ -27,21 +69,70 @@ jobs:
         run: sudo apt-get install google-chrome-stable
       - name: Install requirements
         run: pip install -r requirements.txt
-      - name: test_forms
-        if: "github.event.inputs.deployment_target == 'test_forms'"
-        run: pytest -s -v Tests/test_forms
-      - name: test_pardot
-        if: "github.event.inputs.deployment_target == 'test_pardot'"
-        run: pytest -s -v Tests/test_pardot
-
+      - name: fill_contact_form
+        run: pytest -s -v Tests/test_forms/test_contact_page.py
       - name: Commit JSON data changes
         run: |
           git config --local user.email "githubactions@gmail.com"
           git config --local user.name "GitHub"
-          
-          git add . 
-          git commit -m "Update JSON data from tests" 
-          git push origin master 
+
+          git add .
+          git commit -m "Update JSON data from tests"
+          git push origin master
+
+  Fill_report_forms:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install Chrome
+        run: sudo apt-get install google-chrome-stable
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: fill_contact_form
+        run: pytest -s -v Tests/test_forms/test_reports_page.py
+      - name: Commit JSON data changes
+        run: |
+          git config --local user.email "githubactions@gmail.com"
+          git config --local user.name "GitHub"
+
+          git add .
+          git commit -m "Update JSON data from tests"
+          git push origin master
+
+  Fill_sem_forms:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install Chrome
+        run: sudo apt-get install google-chrome-stable
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: fill_contact_form
+        run: pytest -s -v Tests/test_forms/test_sem_pages.py
+      - name: Commit JSON data changes
+        run: |
+          git config --local user.email "githubactions@gmail.com"
+          git config --local user.name "GitHub"
+
+          git add .
+          git commit -m "Update JSON data from tests"
+          git push origin master
+
+    
 
       
 
