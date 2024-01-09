@@ -32,4 +32,4 @@ jobs:
 #          cd Tests/test_pardot/test_reports_pardot.py
 #          pytest -s -v
         run: |
-          pytest -s -v Tests/test_pardot/test_reports_pardot.py
+          pytest -s -v Tests/test_pardot/test_sem_pardot.py
