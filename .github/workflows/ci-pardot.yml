@@ -28,6 +28,8 @@ jobs:
 #          curl -o /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/$LATEST_CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
 #          sudo unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
       - name: Run tests if verification_code changed
+#        run: |
+#          cd Tests/test_pardot/test_reports_pardot.py
+#          pytest -s -v
         run: |
-          cd Tests/test_pardot/test_reports_pardot.py
-          pytest -s -v
+          pytest -s -v Tests/test_pardot/test_reports_pardot.py
