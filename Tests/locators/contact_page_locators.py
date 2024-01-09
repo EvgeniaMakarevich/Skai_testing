@@ -37,8 +37,8 @@ class Fields_locators:
 class Button:
     button_contact_us = '//input[@class="form-submit"]'
     # borlabs = "//a[@class='_brlbs-btn _brlbs-btn-accept-all _brlbs-cursor']"
-    # borlabs = '//*[@id="BorlabsCookieBox"]/div/div/div/div[1]/div/div/div[2]/p[3]/a'
+    borlabs = '//*[@id="BorlabsCookieBox"]/div/div/div/div[1]/div/div/div[2]/p[3]/a'
     # stage
-    borlabs = '//*[@id="BorlabsCookieBox"]/div/div/div/div[1]/div/div/div/p[4]/a'
+    # borlabs = '//*[@id="BorlabsCookieBox"]/div/div/div/div[1]/div/div/div/p[4]/a'
 
 
