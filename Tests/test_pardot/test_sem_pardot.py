@@ -12,6 +12,7 @@ class TestSemPages():
         driver.set_window_size(1920, 1080)
         paid_social.compare_data_paid_social(driver)
 
+
     def test_paid_search(self, get_pardot):
         driver = get_pardot
         paid_social = PardotPaidSearch(driver, Contact_pardot.url_contact)
