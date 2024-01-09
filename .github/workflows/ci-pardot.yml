@@ -5,11 +5,39 @@ on:
     paths:
       - 'Tests/data/pardot_data.py'
 
+#jobs:
+#  test:
+#    runs-on: ubuntu-latest
+#    timeout-minutes: 20
+#
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v3
+#      - name: setup Python
+#        uses: actions/setup-python@v4
+#        with:
+#          python-version: '3.11'
+#      - name: Install Chrome
+#        run: sudo apt-get install google-chrome-stable
+#      - name: Install requirements
+#        run: pip install -r requirements.txt
+#
+#      - name: Run tests Contact Page
+#        run: |
+#          pytest -s -v Tests/test_pardot/test_contact_pardot.py
+#
+#      - name: Run tests Sem Pages
+#        run: |
+#          pytest -s -v Tests/test_pardot/test_sem_pardot.py
+#
+#      - name: Run tests Report Pages
+#        run: |
+#          pytest -s -v Tests/test_pardot/test_reports_pardot.py
+
 jobs:
-  test:
+  test_contact_pardot:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -21,15 +49,27 @@ jobs:
         run: sudo apt-get install google-chrome-stable
       - name: Install requirements
         run: pip install -r requirements.txt
-
       - name: Run tests Contact Page
-        run: |
-          pytest -s -v Tests/test_pardot/test_contact_pardot.py
+        run: pytest -s -v Tests/test_pardot/test_contact_pardot.py
 
+  test_sem_pardot:
+    needs: test_contact_pardot
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      # ... другие шаги установки и подготовки
       - name: Run tests Sem Pages
-        run: |
-          pytest -s -v Tests/test_pardot/test_sem_pardot.py
+        run: pytest -s -v Tests/test_pardot/test_sem_pardot.py
 
+  test_reports_pardot:
+    needs: test_sem_pardot
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      # ... другие шаги установки и подготовки
       - name: Run tests Report Pages
-        run: |
-          pytest -s -v Tests/test_pardot/test_reports_pardot.py
+        run: pytest -s -v Tests/test_pardot/test_reports_pardot.py
