@@ -7,6 +7,8 @@ from Tests.data.pardot_data import Pardot_data
 from Tests.locators.pardot_locators import Pardot_locators
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
 
 
 @pytest.fixture(scope='session')
@@ -17,7 +19,9 @@ def options():
 
 @pytest.fixture(scope='session')
 def browser(options):
-    browser = webdriver.Chrome(options=options)
+    chrome_service = ChromeService(ChromeDriverManager().install())
+    browser = webdriver.Chrome(service=chrome_service, options=options)
+    # browser = webdriver.Chrome(options=options)
     browser.maximize_window()
     yield browser
     browser.quit()
