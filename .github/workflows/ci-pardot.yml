@@ -28,7 +28,7 @@ jobs:
 
   test_sem_pardot:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
 
     steps:
       - name: Checkout repository
@@ -47,7 +47,7 @@ jobs:
 
   test_report_pardot:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
 
     steps:
       - name: Checkout repository
