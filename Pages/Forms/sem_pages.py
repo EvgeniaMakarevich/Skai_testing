@@ -88,8 +88,9 @@ class SemPages(ContactPage):
         # element = driver.find_element(By.XPATH, Fields_locators.contact_form)
         # driver.execute_script("arguments[0].scrollIntoView();", element)
         self.scroll_to_element(Fields_locators.contact_form)
+        self.driver.execute_script("window.scrollBy(0, -200);")
 
-        time.sleep(2)
+        time.sleep(3)
 
         self.fill_form(Fields_locators.name_input,
                        Fields_locators.email_input,
@@ -126,8 +127,9 @@ class SemPages(ContactPage):
         # element = driver.find_element(By.XPATH, Fields_locators.contact_form)
         # driver.execute_script("arguments[0].scrollIntoView();", element)
         self.scroll_to_element(Fields_locators.contact_form)
+        self.driver.execute_script("window.scrollBy(0, -200);")
 
-        time.sleep(2)
+        time.sleep(3)
 
         self.fill_form(Fields_locators.name_input,
                        Fields_locators.email_input,
