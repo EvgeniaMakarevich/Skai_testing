@@ -105,14 +105,15 @@ class PardotBaseContact(Base_page):
             (comment_pardot, expected_comment, "Comment_pardot"),
             (how_heard_pardot, expected_how_heard, "How_heard_pardot"),
             (m_dig_spend_pardot, expected_m_dig_spend, "M_dig_spend_pardot"),
-            (gdpr_pardot, expected_gdpr_1 or expected_gdpr_2, "Gdpr_pardot"),
+            (gdpr_pardot, (expected_gdpr_1, expected_gdpr_2), "Gdpr_pardot"),
             (channels_pardot, expected_channels, "Channels_pardot"),
             (other_pardot, expected_other_pardot, "Other_pardot")
         ]
 
         for value, expected, label in asserts:
             try:
-                assert value == expected, f"{label}:{value}, expected: {expected}"
+                assert value in expected, f"{label}:{value}, expected: {expected}"
+                # assert value == expected, f"{label}:{value}, expected: {expected}"
             except AssertionError as e:
                 print(f"Assertion error in {label}: {e}")
 
