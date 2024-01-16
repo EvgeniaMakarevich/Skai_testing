@@ -4,6 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import random
 from Tests.locators.contact_page_locators import Button
 import time
+import allure
 
 
 class Base_page:
@@ -13,15 +14,18 @@ class Base_page:
         self.url = url
         self.wait = WebDriverWait(self.driver, 10)
 
+    @allure.step("Open the page")
     def open(self):
         self.driver.get(self.url)
 
+    @allure.step("Close borlabs banner")
     def borlabs_banner_close(self):
         borlabs_button = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, Button.borlabs))
         )
         borlabs_button.click()
 
+    @allure.step("Select random option in dropdown")
     def select_random_option_from_dropdown(self, dropdown_locator, options_locator, selected_option_locator):
         dropdown = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable(dropdown_locator)
@@ -32,27 +36,22 @@ class Base_page:
 
         random_index = random.randint(1, len(options) - 1)
         options[random_index].click()
-        # options[1].click()
         selected_option = WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, selected_option_locator))).text
         return selected_option
 
+    @allure.step("Select exact option in dropdown")
     def select_exact_option(self, dropdown_locator, option_locator, selected_option_locator):
         dropdown = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable(dropdown_locator)).click()
         option = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, option_locator))).click()
 
-        # self.driver.execute_script("window.scrollBy(0, 200);")
-        # time.sleep(3)
-        # option = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, option_locator)))
-        # option.click()
-
         selected_option = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, selected_option_locator))).text
-        # EC.visibility_of_element_located((By.XPATH, selected_option_locator))).text
         return selected_option
 
+    @allure.step("Submit form")
     def submit_form(self, button_locator):
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, button_locator))).click()
 
@@ -62,18 +61,22 @@ class Base_page:
     def wait_until_visible(self, locator):
         return self.wait.until(EC.visibility_of_element_located(locator))
 
+    @allure.step("Select checkbox")
     def select_checkbox(self, locator):
         checkbox = self.driver.find_element(By.XPATH, locator).click()
 
+
     def compare_page_url(self, pardot_url, expected_url):
-        # url_pardot = self.driver.find_element(By.XPATH, pardot_url).text.strip()
-        # assert expected_url == url_pardot, f"url_pardot: {url_pardot},expected_url: {expected_url}"
         try:
             url_pardot = self.driver.find_element(By.XPATH, pardot_url).text.strip()
             assert expected_url == url_pardot, f"url_pardot: {url_pardot}, expected_url: {expected_url}"
         except AssertionError as e:
             print(f"Assertion error in URL comparison: {e}")
 
+    @allure.step("Scroll to element")
     def scroll_to_element(self, element_locator):
         element = self.driver.find_element(By.XPATH, element_locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
+
+

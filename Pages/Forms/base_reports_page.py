@@ -2,6 +2,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from faker import Faker
 from Pages.Base_page import Base_page
+import allure
+import json
+import os
+import shutil
 
 fake = Faker()
 
@@ -34,5 +38,15 @@ class BaseReportPage(Base_page):
             'company_name': getattr(self, 'entered_company_name', None),
             'job_title': getattr(self, 'entered_job_title', None),
         }
+
+    @allure.step("Get and save entered data")
+    def get_and_save_entered_report_data(self, filename, destination_path):
+        entered_data = self.get_entered_data()
+        with open(filename, 'w') as file:
+            json.dump(entered_data, file)
+
+        current_directory = os.path.dirname(os.path.abspath(__file__))
+        destination_directory = os.path.join(current_directory, destination_path)
+        shutil.move(filename, destination_directory)
 
 
