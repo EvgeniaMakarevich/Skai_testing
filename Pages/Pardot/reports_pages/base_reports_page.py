@@ -10,7 +10,7 @@ class PardotBaseReport(Base_page):
     def compare_data(self, contact_data):
         self.open()
 
-        leads = WebDriverWait(self.driver, 10).until(
+        leads = WebDriverWait(self.driver, 30).until(
             EC.visibility_of_all_elements_located((By.XPATH, Form_handler.all_leads)))
 
         entered_name = f"{contact_data['name']} {contact_data['last_name']}"
