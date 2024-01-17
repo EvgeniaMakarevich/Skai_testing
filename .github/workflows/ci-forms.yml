@@ -51,8 +51,9 @@ jobs:
 
       - name: Copy Allure Report to gh-pages branch
         run: |
+           mkdir allure-report
            cp -r $GITHUB_WORKSPACE/allure-report/* .
            git add .
            git commit -m "Deploy Allure Report"
            git push -f origin gh-pages
-           if: always()
+        if: always()
