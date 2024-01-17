@@ -23,6 +23,13 @@ jobs:
           python-version: '3.11'
       - name: Install Chrome
         run: sudo apt-get install google-chrome-stable
+
+      - name: Install Allure
+        run: |
+          sudo apt-add-repository ppa:qameta/allure
+          sudo apt-get update
+          sudo apt-get install allure
+
       - name: Install requirements
         run: pip install -r requirements.txt
       - name: Fill_forms
