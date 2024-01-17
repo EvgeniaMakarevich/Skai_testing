@@ -1,20 +1,16 @@
-from selenium.webdriver.common.by import By
-
 from Tests.locators.contact_page_locators import Fields_locators
 from Pages.Forms.base_contact_page import ContactPage
 from Tests.data.contact_page_data import Json_path
-import json
-import os
-import shutil
 import time
+import allure
 
 
 class ContactPageMain(ContactPage):
     def fill_contact_main(self, driver):
-        # element = driver.find_element(By.XPATH, Fields_locators.contact_form)
-        # driver.execute_script("arguments[0].scrollIntoView();", element)
-        self.scroll_to_element(Fields_locators.contact_form)
-        time.sleep(3)
+
+        with allure.step('Scroll to the form'):
+            self.scroll_to_element(Fields_locators.contact_form)
+            time.sleep(3)
 
         self.fill_form(Fields_locators.name_input,
                        Fields_locators.email_input,
@@ -29,62 +25,30 @@ class ContactPageMain(ContactPage):
                        Fields_locators.selected_option_country,
                        Fields_locators.state, Fields_locators.state_options, Fields_locators.selected_option_state,
                        Fields_locators.questions,
-
                        Fields_locators.how_heard, Fields_locators.how_heard_option_other,
                        Fields_locators.selected_option_how_heard, Fields_locators.how_heard_field_other)
-                       # Fields_locators.how_heard,
-                       # Fields_locators.how_heard_options,
-                       # Fields_locators.selected_option_how_heard)
 
-        entered_data = self.get_entered_data()
-        with open('entered_data_contact.json', 'w') as file:
-            json.dump(entered_data, file)
-
-        current_directory = os.path.dirname(os.path.abspath(__file__))
-        destination_directory = os.path.join(current_directory, Json_path.contact_page_main)
-        shutil.move('entered_data_contact.json', destination_directory)
+        self.get_and_save_entered_contact_data('entered_data_contact.json', Json_path.contact_page_main)
 
 
 
-        # # current_directory = os.getcwd()
-        #
-        # # entered_data_path = os.path.join(current_directory, 'entered_data_contact.json')
-        #
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # entered_data = self.get_entered_data()
         # with open('entered_data_contact.json', 'w') as file:
         #     json.dump(entered_data, file)
         #
         # current_directory = os.path.dirname(os.path.abspath(__file__))
-        # destination_directory = os.path.abspath(os.path.join(current_directory, '../../Pages/json/'))
-        #
-        # # destination_directory = os.path.join(current_directory, Json_path.contact_page_main)
-        # # shutil.move(entered_data_path, destination_directory)
-        # source_file_path = os.path.join(current_directory, 'entered_data_contact.json')
-        # shutil.move(source_file_path, destination_directory)
-        # # shutil.move('entered_data_contact.json', destination_directory)
-
-
-
-        # # Определяем путь к файлу с данными
-        # source_file_path = 'entered_data_contact.json'
-        #
-        # # Получаем данные
-        # entered_data = self.get_entered_data()
-        #
-        # # Записываем данные в файл entered_data_contact.json
-        # with open(source_file_path, 'w') as file:
-        #     json.dump(entered_data, file)
-        #
-        # # Определяем путь к директории назначения
-        # current_directory = os.path.dirname(os.path.abspath(__file__))
-        # destination_directory = os.path.abspath(os.path.join(current_directory, '../../Pages/json/'))
-        #
-        # # Определяем полный путь к файлу в директории назначения
-        # destination_file_path = os.path.join(destination_directory, 'entered_data_contact.json')
-        #
-        # # Копируем файл с данными в директорию назначения
-        # shutil.copy(source_file_path, destination_file_path)
-
-
-
-
-
+        # destination_directory = os.path.join(current_directory, Json_path.contact_page_main)
+        # shutil.move('entered_data_contact.json', destination_directory)

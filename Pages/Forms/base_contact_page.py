@@ -1,15 +1,18 @@
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from faker import Faker
 from Pages.Base_page import Base_page
-from selenium.webdriver.common.action_chains import ActionChains
 import time
+import allure
+import json
+import os
+import shutil
 
 fake = Faker()
 
 
 class ContactPage(Base_page):
+    @allure.step("Fill the form")
     def fill_form(self, name_locator, email_locator, last_name_locator, company_name_locator, job_title_locator,
                   area_of_int_locator, area_of_int_options, area_of_int_soption, m_dig_spend_locator,
                   m_dig_spend_options,
@@ -17,6 +20,7 @@ class ContactPage(Base_page):
                   state_options,
                   state_soption, text_c_locator, how_heard_locator, how_heard_options, how_heard_soption,
                   other_field_locator):
+
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(name_locator)).send_keys('Internal test')
         self.entered_name = 'Internal test'
 
@@ -54,10 +58,6 @@ class ContactPage(Base_page):
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(text_c_locator)).send_keys(text_c)
         self.entered_text_c = text_c
 
-        # how_heard_option = self.select_random_option_from_dropdown(how_heard_locator, how_heard_options,
-        #                                                            how_heard_soption)
-        # self.entered_how_heard = how_heard_option
-
         how_heard_option = self.select_exact_option(how_heard_locator, how_heard_options, how_heard_soption)
         self.entered_how_heard = how_heard_option
 
@@ -81,7 +81,15 @@ class ContactPage(Base_page):
             'other': getattr(self, 'entered_text_other', None)
         }
 
+    @allure.step("Get and save entered data")
+    def get_and_save_entered_contact_data(self, filename, destination_path):
+        entered_data = self.get_entered_data()
+        with open(filename, 'w') as file:
+            json.dump(entered_data, file)
 
+        current_directory = os.path.dirname(os.path.abspath(__file__))
+        destination_directory = os.path.join(current_directory, destination_path)
+        shutil.move(filename, destination_directory)
 
 
 

@@ -12,6 +12,7 @@ fake = Faker()
 
 class BaseReportPage(Base_page):
     def fill_form(self, name_locator, email_locator, last_name_locator, company_name_locator, job_title_locator):
+
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(name_locator)).send_keys('Internal test')
         self.entered_name = 'Internal test'
 

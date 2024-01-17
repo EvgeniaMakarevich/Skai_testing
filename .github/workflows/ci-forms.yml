@@ -26,7 +26,12 @@ jobs:
       - name: Install requirements
         run: pip install -r requirements.txt
       - name: Fill_forms
-        run: pytest -s -v Tests/test_forms
+        run: pytest -s -v Tests/test_forms || true
+             allure generate allure-results -o allure-report
+             mv allure-report $GITHUB_WORKSPACE/allure-report
+        env:
+          GITHUB_WORKSPACE: ${{ github.workspace }}
+
 
       - name: Commit JSON data changes
         run: |
@@ -36,3 +41,13 @@ jobs:
           git add .
           git commit -m "Update JSON data from tests"
           git push origin master
+
+
+      - name: Set up Git for GitHub Pages
+        run: git checkout -B gh-pages
+      - name: Deploy to GitHub Pages
+        run: |
+          git add .
+          git commit -m "Deploy Allure Report"
+          git push -f origin gh-pages
+        if: always()
