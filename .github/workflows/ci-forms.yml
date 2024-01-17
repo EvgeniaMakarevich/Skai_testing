@@ -24,21 +24,17 @@ jobs:
       - name: Install Chrome
         run: sudo apt-get install google-chrome-stable
 
-      - name: Install Allure
-        run: |
-          sudo apt-add-repository ppa:qameta/allure
-          sudo apt-get update
-          sudo apt-get install allure
-
       - name: Install requirements
         run: pip install -r requirements.txt
       - name: Fill_forms
         run: pytest -s -v Tests/test_forms || true
-             allure generate allure-results -o allure-report
-             mv allure-report $GITHUB_WORKSPACE/allure-report
+
         env:
           GITHUB_WORKSPACE: ${{ github.workspace }}
 
+      - name: Generate Allure Report
+        run: |
+          allure generate $GITHUB_WORKSPACE/allure-results -o $GITHUB_WORKSPACE/allure-report
 
       - name: Commit JSON data changes
         run: |
@@ -59,8 +55,7 @@ jobs:
       - name: Copy Allure Report to gh-pages branch
         run: |
            mkdir allure-report
-           allure generate allure-results -o allure-report
-           cp -r allure-report/* .
+           cp -r $GITHUB_WORKSPACE/allure-report/* .
            git add .
            git commit -m "Deploy Allure Report"
            git push -f origin gh-pages
