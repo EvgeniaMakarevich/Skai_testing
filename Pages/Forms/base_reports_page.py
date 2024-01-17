@@ -49,5 +49,3 @@ class BaseReportPage(Base_page):
         current_directory = os.path.dirname(os.path.abspath(__file__))
         destination_directory = os.path.join(current_directory, destination_path)
         shutil.move(filename, destination_directory)
-
-
