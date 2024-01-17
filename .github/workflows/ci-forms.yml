@@ -17,24 +17,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
       - name: setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
+
       - name: Install Chrome
         run: sudo apt-get install google-chrome-stable
 
       - name: Install requirements
         run: pip install -r requirements.txt
       - name: Fill_forms
-        run: pytest -s -v Tests/test_forms || true
-
-        env:
-          GITHUB_WORKSPACE: ${{ github.workspace }}
-
-      - name: Generate Allure Report
-        run: |
-          allure generate $GITHUB_WORKSPACE/allure-results -o $GITHUB_WORKSPACE/allure-report
+        run: pytest -s -v Tests/test_forms --alluredir=allure-results || true
 
       - name: Commit JSON data changes
         run: |
@@ -45,18 +40,45 @@ jobs:
           git commit -m "Update JSON data from tests"
           git push origin master
 
+      - name: Store allure results
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path:
+            allure-results
+          retention-days: 1
 
-      - name: Set up Git for GitHub Pages
-        run: |
-          git config --local user.email "githubactions@gmail.com"
-          git config --local user.name "GitHub"
-          git checkout -B gh-pages
 
-      - name: Copy Allure Report to gh-pages branch
-        run: |
-           mkdir allure-report
-           cp -r $GITHUB_WORKSPACE/allure-report/* .
-           git add .
-           git commit -m "Deploy Allure Report"
-           git push -f origin gh-pages
-        if: always()
+  generate-report:
+    runs-on: ubuntu-latest
+    needs: test
+    name: Generate report
+    steps:
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'microsoft' # See 'Supported distributions' for available options
+          java-version: '17'
+      - run: sudo wget https://github.com/allure-framework/allure2/releases/download/2.23.1/allure-2.23.1.tgz && sudo tar -zxvf allure-2.23.1.tgz -C /opt/ && sudo ln -s /opt/allure-2.23.1/bin/allure /usr/bin/allure
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v3
+      - run: allure generate -c allure-results -o _site
+      - name: Store generated report
+        uses: actions/upload-artifact@v3
+        with:
+          name: _site
+          path:
+            _site
+          retention-days: 1
+
+  publish-report:
+    runs-on: ubuntu-latest
+    needs: generate-report
+    name: Report publication
+    steps:
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v3
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1.2.9
