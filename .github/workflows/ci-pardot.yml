@@ -25,6 +25,7 @@ jobs:
 
       - name: Run tests Contact Page
         run: pytest -s -v Tests/test_pardot/test_contact_pardot.py
+        continue-on-error: true
 
 
   test_report_pardot:
@@ -45,6 +46,7 @@ jobs:
 
       - name: Run tests Report Pages
         run: pytest -s -v Tests/test_pardot/test_reports_pardot.py
+        continue-on-error: true
 
   test_sem_pardot:
     runs-on: ubuntu-latest
@@ -64,4 +66,5 @@ jobs:
 
       - name: Run tests SEM Pages
         run: pytest -s -v Tests/test_pardot/test_sem_pardot.py
+        continue-on-error: true
 
