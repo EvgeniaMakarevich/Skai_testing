@@ -85,7 +85,7 @@ jobs:
         with:
           name: allure-results
           path:
-            allure.results
+            allure-results
           retention-days: 1
 
   test:
