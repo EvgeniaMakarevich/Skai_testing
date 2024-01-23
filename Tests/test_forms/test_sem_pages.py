@@ -29,7 +29,7 @@ class TestFillSemPages:
         driver.set_window_size(1920, 1080)
         sem_page.borlabs_banner_close()
         fill_method(sem_page)
-        # sem_page.submit_form(Button.button_contact_us)
-        # assert driver.current_url.startswith(Urls.thankyou_page), 'Incorrect URL'
+        sem_page.submit_form(Button.button_contact_us)
+        assert driver.current_url.startswith(Urls.thankyou_page), 'Incorrect URL'
         allure.dynamic.title(title)
         allure.dynamic.description(description)
