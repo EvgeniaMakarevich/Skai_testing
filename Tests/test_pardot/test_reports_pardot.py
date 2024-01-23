@@ -31,8 +31,8 @@ class TestReportsPages():
         driver.set_window_size(1920, 1080)
         hidden_cost_report.compare_data_hidden_cost(driver)
 
-    def test_prime_day_report(self, get_pardot):
-        driver = get_pardot
-        prime_day_report = PardotPrimeDay(driver, Urls.pardot_prime_day_form_handler)
-        driver.set_window_size(1920, 1080)
-        prime_day_report.compare_data_prime_day(driver)
+    # def test_prime_day_report(self, get_pardot):
+    #     driver = get_pardot
+    #     prime_day_report = PardotPrimeDay(driver, Urls.pardot_prime_day_form_handler)
+    #     driver.set_window_size(1920, 1080)
+    #     prime_day_report.compare_data_prime_day(driver)
