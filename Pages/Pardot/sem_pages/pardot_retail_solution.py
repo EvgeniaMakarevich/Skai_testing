@@ -14,6 +14,5 @@ with open(json_path, 'r') as file:
 class PardotRetailSolution(PardotBaseContact):
     def compare_data_retail_solution(self, driver):
         retail_solution = PardotBaseContact(driver, Contact_pardot.url_contact)
-        # contact_data_retail_solution = retail_solution.load_json_data(Json_path.retail_solution_pardot)
         retail_solution.compare_data(contact_data_retail_solution)
         retail_solution.compare_page_url(Contact_pardot.page_url, Urls.retail_solution_url)

@@ -1,3 +1,6 @@
+import json
+import os
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -63,3 +66,10 @@ class PardotBaseReport(Base_page):
             assert report_name_pardot == report_name, f"Report_name_pardot:{report_name_pardot}, expected_report_name: {report_name}"
         except AssertionError as e:
             print(f"Assertion error in report name comparison: {e}")
+
+    def load_json_data_reports(self, json_path):
+        current_directory = os.path.dirname(os.path.abspath(__file__))
+        full_path = os.path.join(current_directory, json_path)
+
+        with open(full_path, 'r') as file:
+            return json.load(file)

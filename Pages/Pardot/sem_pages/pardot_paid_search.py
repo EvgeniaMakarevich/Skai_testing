@@ -14,7 +14,6 @@ with open(json_path, 'r') as file:
 class PardotPaidSearch(PardotBaseContact):
     def compare_data_paid_search(self, driver):
         paid_search = PardotBaseContact(driver, Contact_pardot.url_contact)
-        # contact_data_paid_search = paid_search.load_json_data(Json_path.paid_search_pardot)
         paid_search.compare_data(contact_data_paid_search)
         paid_search.compare_page_url(Contact_pardot.page_url, Urls.paid_search_url)
 
