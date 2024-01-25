@@ -2,8 +2,6 @@ from Tests.locators.pardot_locators import Contact_pardot
 from Pages.Pardot.Base_pardot_contact import PardotBaseContact
 from Tests.data.contact_page_data import Url
 from Tests.data.contact_page_data import Json_path
-
-
 class PardotContactPage(PardotBaseContact):
     def compare_data_contact_page(self, driver):
         contact_page = PardotBaseContact(driver, Contact_pardot.url_contact)

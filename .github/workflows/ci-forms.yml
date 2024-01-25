@@ -112,7 +112,7 @@ jobs:
         uses: actions/download-artifact@v3
 
       - name: Fill_forms
-        run: pytest -s -v Tests/test_forms --alluredir=allure-results || true
+        run: pytest -s -v Tests/test_forms --alluredir=allure-results
         continue-on-error: true
 
       - name: Commit JSON data changes
