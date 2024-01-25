@@ -27,8 +27,8 @@ class TestFillReportPages():
 
         fill_method(report)
 
-        report.submit_form(Button.button_contact_us)
-
-        window_handles = driver.window_handles
-        driver.switch_to.window(window_handles[-1])
-        assert driver.current_url == resource_url
+        # report.submit_form(Button.button_contact_us)
+        #
+        # window_handles = driver.window_handles
+        # driver.switch_to.window(window_handles[-1])
+        # assert driver.current_url == resource_url

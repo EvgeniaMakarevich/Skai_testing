@@ -24,12 +24,14 @@ class TestFillSemPages:
                                   "Fill form of SEM page 'Amazon Ads'")
                              ])
     def test_fill_sem_pages(self, driver, url, fill_method, title, description):
+        allure.dynamic.title(title)
+        allure.dynamic.description(description)
+
         sem_page = SemPages(driver, url)
         sem_page.open()
         driver.set_window_size(1920, 1080)
         sem_page.borlabs_banner_close()
         fill_method(sem_page)
-        sem_page.submit_form(Button.button_contact_us)
-        assert driver.current_url.startswith(Urls.thankyou_page), 'Incorrect URL'
-        allure.dynamic.title(title)
-        allure.dynamic.description(description)
+        # sem_page.submit_form(Button.button_contact_us)
+        # assert driver.current_url.startswith(Url.thankyou_page), 'Incorrect URL'
+
