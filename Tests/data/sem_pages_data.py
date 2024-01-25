@@ -4,10 +4,10 @@ class Json_path:
     retail_solution = '../../Pages/json/entered_data_retail_solution.json'
     amazon_ads = '../../Pages/json/entered_data_amazon_ads.json'
 
-    paid_social_pardot = '../../../Pages/json/entered_data_paid_social.json'
-    paid_search_pardot = '../../../Pages/json/entered_data_paid_search.json'
-    retail_solution_pardot = '../../../Pages/json/entered_data_retail_solution.json'
-    amazon_ads_pardot = '../../../Pages/json/entered_data_amazon_ads.json'
+    paid_social_pardot = '../../Pages/json/entered_data_paid_social.json'
+    paid_search_pardot = '../../Pages/json/entered_data_paid_search.json'
+    retail_solution_pardot = '../../Pages/json/entered_data_retail_solution.json'
+    amazon_ads_pardot = '../../Pages/json/entered_data_amazon_ads.json'
 
 
 class Urls:

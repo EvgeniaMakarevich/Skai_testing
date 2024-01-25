@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from Pages.Base_page import Base_page
 from Tests.locators.pardot_locators import Contact_pardot, Form_handler
 from Tests.locators.reports_locators import ReportNamesLocators
-
+import allure
 
 class PardotBaseReport(Base_page):
     def compare_data(self, contact_data):
@@ -67,6 +67,7 @@ class PardotBaseReport(Base_page):
         except AssertionError as e:
             print(f"Assertion error in report name comparison: {e}")
 
+    @allure.step("Load JSON data")
     def load_json_data_reports(self, json_path):
         current_directory = os.path.dirname(os.path.abspath(__file__))
         full_path = os.path.join(current_directory, json_path)

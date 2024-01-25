@@ -5,11 +5,11 @@ class Json_path:
     amazon_playbook_report = '../../Pages/json/entered_data_amazon_playbook_report.json'
     apple_ads_report = '../../Pages/json/entered_data_apple_ads_report.json'
 
-    hidden_cost_report_pardot = '../../../Pages/json/entered_data_hidden_cost_report.json'
-    ai_report_pardot = '../../../Pages/json/entered_data_ai_report.json'
-    prime_day_report_pardot = '../../../Pages/json/entered_data_prime_day_report.json'
-    amazon_playbook_report_pardot = '../../../Pages/json/entered_data_amazon_playbook_report.json'
-    apple_ads_report_pardot = '../../../Pages/json/entered_data_apple_ads_report.json'
+    hidden_cost_report_pardot = '../../Pages/json/entered_data_hidden_cost_report.json'
+    ai_report_pardot = '../../Pages/json/entered_data_ai_report.json'
+    prime_day_report_pardot = '../../Pages/json/entered_data_prime_day_report.json'
+    amazon_playbook_report_pardot = '../../Pages/json/entered_data_amazon_playbook_report.json'
+    apple_ads_report_pardot = '../../Pages/json/entered_data_apple_ads_report.json'
 
 
 class Urls:

@@ -7,7 +7,7 @@ import pytest
 
 
 
-class TestFillReportPages():
+class TestFillReportPages:
     @allure.tag("Report form")
     @allure.severity(allure.severity_level.CRITICAL)
 
@@ -18,12 +18,12 @@ class TestFillReportPages():
                               ("https://skai.io/reports-and-whitepapers/amazon-marketing-cloud-playbook/", ReportsPages.fill_amazon_playbook, Resource_download_urls.amazon_playbook, "Amazon Marketing Cloud Playbook Report", "Fill form of report 'Amazon Marketing Cloud Playbook'"),
                               ("https://skai.io/reports-and-whitepapers/apple-search-ads/", ReportsPages.fill_apple_ads, Resource_download_urls.apple_ads, "Apple Search Ads Report", "Fill form of report 'Mastering Apple Search Ads'")])
     def test_fill_report(self, driver, report_url, fill_method, resource_url, title, description):
+        allure.dynamic.title(title)
+        allure.dynamic.description(description)
+
         report = ReportsPages(driver, report_url)
         report.open()
         report.borlabs_banner_close()
-
-        allure.dynamic.title(title)
-        allure.dynamic.description(description)
 
         fill_method(report)
 

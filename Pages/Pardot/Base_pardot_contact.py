@@ -7,9 +7,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from Pages.Base_page import Base_page
 from Tests.locators.pardot_locators import Contact_pardot, Form_handler
 import time
+import allure
 
 
 class PardotBaseContact(Base_page):
+    @allure.step("Compare data")
     def compare_data(self, contact_data):
         self.open()
 
@@ -97,6 +99,7 @@ class PardotBaseContact(Base_page):
             except AssertionError as e:
                 print(f"Assertion error in {label}: {e}")
 
+    @allure.step("Loading JSON data")
     def load_json_data(self, json_path):
         current_directory = os.path.dirname(os.path.abspath(__file__))
         full_path = os.path.join(current_directory, json_path)
