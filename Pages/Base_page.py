@@ -65,7 +65,7 @@ class Base_page:
     def select_checkbox(self, locator):
         checkbox = self.driver.find_element(By.XPATH, locator).click()
 
-
+    @allure.step("Compare page URL")
     def compare_page_url(self, pardot_url, expected_url):
         try:
             url_pardot = self.driver.find_element(By.XPATH, pardot_url).text.strip()
