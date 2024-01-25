@@ -4,12 +4,18 @@ class Json_path:
     prime_day_report = '../../Pages/json/entered_data_prime_day_report.json'
     amazon_playbook_report = '../../Pages/json/entered_data_amazon_playbook_report.json'
     apple_ads_report = '../../Pages/json/entered_data_apple_ads_report.json'
+    qtr2023_4_report = '../../Pages/json/entered_data_qtr2023_4_report.json'
+    qtr2023_3_report = '../../Pages/json/entered_data_qtr2023_3_report.json'
+    qtr2023_2_report = '../../Pages/json/entered_data_qtr2023_2_report.json'
 
     hidden_cost_report_pardot = '../../Pages/json/entered_data_hidden_cost_report.json'
     ai_report_pardot = '../../Pages/json/entered_data_ai_report.json'
     prime_day_report_pardot = '../../Pages/json/entered_data_prime_day_report.json'
     amazon_playbook_report_pardot = '../../Pages/json/entered_data_amazon_playbook_report.json'
     apple_ads_report_pardot = '../../Pages/json/entered_data_apple_ads_report.json'
+    qtr2023_4_report_pardot = '../../Pages/json/entered_data_qtr2023_4_report.json'
+    qtr2023_3_report_pardot = '../../Pages/json/entered_data_qtr2023_3_report.json'
+    qtr2023_2_report_pardot = '../../Pages/json/entered_data_qtr2023_2_report.json'
 
 
 class Urls:
@@ -25,6 +31,9 @@ class Urls:
     pardot_prime_day_form_handler = 'https://pi.pardot.com/formHandler/read/id/6175'
     pardot_amazon_form_handler = 'https://pi.pardot.com/formHandler/read/id/6172'
     pardot_apple_ads_form_handler = 'https://pi.pardot.com/formHandler/read/id/5243'
+    pardot_qtr2023_4_form_handler = 'https://pi.pardot.com/formHandler/read/id/6318'
+    pardot_qtr2023_3_form_handler = 'https://pi.pardot.com/formHandler/read/id/6265'
+    pardot_qtr2023_2_form_handler = 'https://pi.pardot.com/formHandler/read/id/6220'
 
 
 
