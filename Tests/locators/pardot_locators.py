@@ -26,6 +26,9 @@ class Contact_pardot:
     other = "//td[@class='key'][a[text()='Other (Please Specify)']]/following-sibling::td[@class='value breakword']"
     page_url = "//td[@class='key'][a[text()='Page Url']]/following-sibling::td[@class='value breakword']"
 
+    phone_field = "//td[@class='key' and contains(text(), 'Phone')]/following-sibling::td"
+    dietary_req_field = "//td[@class='key' ][contains(a, 'Dietary Requirements ')]/following-sibling::td[@class='value breakword']"
+
 
 class Form_handler:
     all_leads = "//span[@class='slds']/a[1]"
