@@ -88,7 +88,7 @@ jobs:
     name: Download history
     steps:
       - name: setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
@@ -139,7 +139,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - name: Install Chrome
@@ -172,7 +172,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - name: Install Chrome
@@ -204,7 +204,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - name: Install Chrome
