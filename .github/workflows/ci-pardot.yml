@@ -175,7 +175,10 @@ jobs:
 
   generate-report:
     runs-on: ubuntu-latest
-#    needs: test
+    needs:
+      - test_contact_pardot
+      - test_report_pardot
+      - test_sem_pardot
     name: Generate report
     steps:
       - uses: actions/setup-java@v3
