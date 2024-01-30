@@ -26,5 +26,5 @@ class TestFillEventPages:
         event.borlabs_banner_close()
         fill_method(event)
 
-        # event.submit_form(locators.submit_button)
-        # assert driver.current_url.startswith(Url.thankyou_page), 'Incorrect URL'
+        event.submit_form(locators.submit_button)
+        assert driver.current_url.startswith(Url.thankyou_page), 'Incorrect URL'
