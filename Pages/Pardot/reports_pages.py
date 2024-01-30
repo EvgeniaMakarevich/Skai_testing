@@ -12,24 +12,24 @@ class ReportPagesPardot(PardotBaseReport):
         qtr_2023_4_report = PardotBaseReport(driver, Urls.pardot_qtr2023_4_form_handler)
         contact_data_qtr_2023_4 = qtr_2023_4_report.load_json_data_reports(Json_path.qtr2023_4_report_pardot)
         qtr_2023_4_report.compare_data(contact_data_qtr_2023_4)
-        # qtr_2023_4_report.compare_page_url(Contact_pardot.page_url, Urls.ai_url)
-        # qtr_2023_4_report.compare_report_name(ReportsNames.ai)
+        qtr_2023_4_report.compare_page_url(Contact_pardot.page_url, Urls.qtr2023_4_url)
+        qtr_2023_4_report.compare_report_name(ReportsNames.qtr2023_4)
 
     @allure.step("Compare data QTR_2024_3 report")
     def compare_data_qtr2023_3(self, driver):
         qtr_2023_3_report = PardotBaseReport(driver, Urls.pardot_qtr2023_3_form_handler)
         contact_data_qtr_2023_3 = qtr_2023_3_report.load_json_data_reports(Json_path.qtr2023_3_report_pardot)
         qtr_2023_3_report.compare_data(contact_data_qtr_2023_3)
-        # qtr_2023_4_report.compare_page_url(Contact_pardot.page_url, Urls.ai_url)
-        # qtr_2023_4_report.compare_report_name(ReportsNames.ai)
+        qtr_2023_3_report.compare_page_url(Contact_pardot.page_url, Urls.qtr2023_3_url)
+        qtr_2023_3_report.compare_report_name(ReportsNames.qtr2023_3)
 
     @allure.step("Compare data QTR_2024_2 report")
     def compare_data_qtr2023_2(self, driver):
         qtr_2023_2_report = PardotBaseReport(driver, Urls.pardot_qtr2023_2_form_handler)
         contact_data_qtr_2023_2 = qtr_2023_2_report.load_json_data_reports(Json_path.qtr2023_2_report_pardot)
         qtr_2023_2_report.compare_data(contact_data_qtr_2023_2)
-        # qtr_2023_4_report.compare_page_url(Contact_pardot.page_url, Urls.ai_url)
-        # qtr_2023_4_report.compare_report_name(ReportsNames.ai)
+        qtr_2023_2_report.compare_page_url(Contact_pardot.page_url, Urls.qtr2023_2_url)
+        qtr_2023_2_report.compare_report_name(ReportsNames.qtr2023_2)
 
     @allure.step("Compare data AI report")
     def compare_data_ai(self, driver):

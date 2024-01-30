@@ -1,6 +1,5 @@
 from Pages.Forms.events_pages import EventsPages
 from Tests.data.events_pages_data import Urls
-from Tests.data.contact_page_data import Url
 from conftest import driver, options
 from Tests.locators.events_locators import EventFormLocators
 import allure
@@ -27,4 +26,4 @@ class TestFillEventPages:
         fill_method(event)
 
         event.submit_form(locators.submit_button)
-        assert driver.current_url.startswith(Url.thankyou_page), 'Incorrect URL'
+        assert driver.current_url.startswith(Urls.thankyou), 'Incorrect URL'

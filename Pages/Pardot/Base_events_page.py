@@ -41,11 +41,11 @@ class PardotBaseEvent(Base_page):
         country_pardot = self.driver.find_element(By.XPATH, Contact_pardot.country_field).text.strip()
         expected_country = contact_data['country']
 
-        # state_pardot = self.driver.find_element(By.XPATH, Contact_pardot.state_field).text.strip()
-        # expected_state = contact_data['state']
+        state_pardot = self.driver.find_element(By.XPATH, Contact_pardot.state_field).text.strip()
+        expected_state = contact_data['state']
 
         dietary_req = self.driver.find_element(By.XPATH, Contact_pardot.dietary_req_field).text.strip()
-        expected_dietary_req = contact_data['dietary_req']
+        expected_dietary_req = contact_data['dietary_req'].replace("\n", " ")
 
         # gdpr_pardot = self.driver.find_element(By.XPATH, Contact_pardot.gdpr).text.strip()
         # expected_gdpr_1 = 'Opt-In'
@@ -64,8 +64,8 @@ class PardotBaseEvent(Base_page):
             (job_title_pardot, expected_job_title, "Job_title_pardot"),
             (phone_pardot, expected_phone, "Phone_pardot"),
             (country_pardot, expected_country, "Country_pardot"),
-            # (state_pardot, expected_state, "State_pardot"),
-            (dietary_req, expected_dietary_req, "Dietary_req_pardot")
+            (state_pardot, expected_state, "State_pardot"),
+            (dietary_req.replace(" ", ""), expected_dietary_req.replace(" ", ""), "Dietary_req_pardot")
             # (gdpr_pardot, expected_gdpr_1 or expected_gdpr_2, "Gdpr_pardot")
         ]
 

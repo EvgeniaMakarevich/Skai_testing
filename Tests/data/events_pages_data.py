@@ -4,6 +4,7 @@ class Json_path:
 
 class Urls:
     media_roundtable_url = "https://skai.io/events/media-leaders-roundtable-make-better-marketing-decisions-in-an-omnichannel-world/"
+    thankyou = 'https://skai.io/thank-you-event-submission/'
 
 class Pardot:
     media_roundtable_form_handler = "https://pi.pardot.com/formHandler/read/id/6303"

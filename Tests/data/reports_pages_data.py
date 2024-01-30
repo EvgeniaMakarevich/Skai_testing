@@ -43,6 +43,9 @@ class Urls:
     prime_day_url = '/reports-and-whitepapers/get-prepped-for-prime-day-2023/'
     amazon_url = '/reports-and-whitepapers/amazon-marketing-cloud-playbook/'
     apple_ads_url = '/reports-and-whitepapers/apple-search-ads/'
+    qtr2023_4_url = '/reports-and-whitepapers/q4-2023-quarterly-digital-trends-report/'
+    qtr2023_3_url = '/reports-and-whitepapers/q3-2023-quarterly-digital-trends-report/'
+    qtr2023_2_url = '/reports-and-whitepapers/q2-2023-quarterly-digital-trends-report/'
 
 class ReportsNames:
     prime_day = 'Get Prepped for Prime Day 2023'
@@ -50,6 +53,9 @@ class ReportsNames:
     amazon_playbook = 'Amazon Marketing Cloud Playbook'
     apple_ads = 'Mastering Apple Search Ads'
     hidden_cost = 'The Hidden Cost of Advertising Point Solutions'
+    qtr2023_4 = 'Q4 2023 Quarterly Trends Report'
+    qtr2023_3 = 'Q3 2023 Quarterly Trends Report'
+    qtr2023_2 = 'Q2 2023 Quarterly Trends Report'
 
 
 class Resource_download_urls:
