@@ -22,7 +22,7 @@ class TestReportsPages:
          "Compare Pardot data with entered 'The Next Big Thing: Where Generative AI’s.. report' data"),
 
         (Urls.pardot_hidden_cost_handler, ReportPagesPardot.compare_data_hidden_cost, "Hidden Cost Report",
-         "Compare Pardot data with entered 'Hidden Cost Report' data"),
+         "Compare Pardot data with entered 'Hidden Cost Report' data")
 
         # (Urls.pardot_prime_day_form_handler, ReportPagesPardot.compare_data_prime_day, "Prime Day 2023 Report",
         #  "Compare Pardot data with entered 'Prime Day 2023 Report' data"),
