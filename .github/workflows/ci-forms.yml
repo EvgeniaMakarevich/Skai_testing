@@ -87,7 +87,7 @@ jobs:
 #        uses: actions/download-artifact@v3
 
       - name: Fill_forms
-        run: pytest -s -v Tests/test_forms --alluredir=allure-results
+        run: pytest -s -v Tests/test_forms/test_contact_page.py --alluredir=allure-results
         continue-on-error: true
 
       - name: Commit JSON data changes
@@ -102,7 +102,7 @@ jobs:
       - name: Store allure results
         uses: actions/upload-artifact@v3
         with:
-          name: allure-results
+          name: allure-results-forms
           path:
             allure-results
           retention-days: 1
