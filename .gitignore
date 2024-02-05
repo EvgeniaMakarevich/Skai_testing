@@ -3,3 +3,4 @@
 __pycache__
 allure-results
 venv
+.DS_Store
