@@ -24,11 +24,29 @@ class EventsPages(BaseEventPage):
 
     @allure.step("Select the checkbox 'Privacy Policy'")
     def select_checkbox_step(self):
-        self.select_checkbox(locators.privacy_policy)
+        try:
+            with allure.step("Selecting the checkbox 'Privacy Policy'"):
+                self.select_checkbox(locators.privacy_policy)
+                allure.attach(self.driver.get_screenshot_as_png(), name="Selecting the checkbox 'Privacy Policy'",
+                              attachment_type=allure.attachment_type.PNG)
+        except Exception as e:
+            allure.attach(self.driver.get_screenshot_as_png(), name="Error selecting checkbox",
+                          attachment_type=allure.attachment_type.PNG)
+            raise e
 
     @allure.step("Select the checkbox 'Agree to contact me'")
     def select_checkbox_step_2(self):
-        self.select_checkbox(locators.contact_me)
+        # self.select_checkbox(locators.contact_me)
+        try:
+            with allure.step("Selecting the checkbox 'Agree to contact me'"):
+                self.select_checkbox(locators.contact_me)
+                allure.attach(self.driver.get_screenshot_as_png(), name="Selecting the checkbox 'Agree to contact me'",
+                              attachment_type=allure.attachment_type.PNG)
+        except Exception as e:
+            allure.attach(self.driver.get_screenshot_as_png(), name="Error selecting checkbox",
+                          attachment_type=allure.attachment_type.PNG)
+            raise e
+
 
     def fill_report_form_and_save(self, json_filename, json_destination_path):
         self.fill_form_fields()

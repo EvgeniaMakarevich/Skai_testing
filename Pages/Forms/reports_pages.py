@@ -11,8 +11,11 @@ class ReportsPages(BaseReportPage):
         # GENERAL FUNCTIONS
         @allure.step("Scroll to the form")
         def scroll_to_form(self):
-            self.scroll_to_element(Fields_locators.contact_form)
-            time.sleep(2)
+            try:
+                self.scroll_to_element(Fields_locators.contact_form)
+                time.sleep(2)
+            except Exception as e:
+                allure.attach(str(e), name="Error message", attachment_type=allure.attachment_type.TEXT)
 
         @allure.step("Fill the form fields")
         def fill_form_fields(self):
@@ -23,10 +26,17 @@ class ReportsPages(BaseReportPage):
                 Fields_locators.company_input,
                 Fields_locators.job_title_input
             )
-
         @allure.step("Select the checkbox")
         def select_checkbox_step(self):
-            self.select_checkbox(Checkbox.checkbox)
+            try:
+                with allure.step("Selecting the checkbox"):
+                    self.select_checkbox(Checkbox.checkbox)
+                    allure.attach(self.driver.get_screenshot_as_png(), name="Checkbox selected",
+                                  attachment_type=allure.attachment_type.PNG)
+            except Exception as e:
+                allure.attach(self.driver.get_screenshot_as_png(), name="Error selecting checkbox",
+                              attachment_type=allure.attachment_type.PNG)
+                raise e
 
         def fill_report_form_and_save(self, json_filename, json_destination_path):
             self.scroll_to_form()

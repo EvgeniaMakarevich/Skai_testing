@@ -18,10 +18,18 @@ class PardotBaseReport(Base_page):
 
         entered_name = f"{contact_data['name']} {contact_data['last_name']}"
 
-        for lead in leads:
-            if lead.text == entered_name:
-                lead.click()
-                break
+        try:
+            for lead in leads:
+                if lead.text == entered_name:
+                    lead.click()
+                    break
+        except Exception as e:
+            print(f"Error during lead click: {e}")
+            allure.attach(self.driver.get_screenshot_as_png(), name="Error during lead click",
+                          attachment_type=allure.attachment_type.PNG)
+            allure.attach(str(e), name="Error message during lead click",
+                          attachment_type=allure.attachment_type.TEXT)
+            raise e
 
         name_pardot = self.driver.find_element(By.XPATH, Contact_pardot.name_field).text.strip()
         expected_name = f"{contact_data['name']} {contact_data['last_name']}"
@@ -58,7 +66,10 @@ class PardotBaseReport(Base_page):
                 assert value in expected, f"{label}:{value}, expected: {expected}"
             except AssertionError as e:
                 print(f"Assertion error in {label}: {e}")
-
+                allure.attach(self.driver.get_screenshot_as_png(), name=f"Assertion error in {label}",
+                              attachment_type=allure.attachment_type.PNG)
+                allure.attach(str(e), name=f"Assertion error message in {label}",
+                              attachment_type=allure.attachment_type.TEXT)
     def compare_report_name(self, report_name):
         try:
             report_name_pardot = self.driver.find_element(By.XPATH,
@@ -73,4 +84,9 @@ class PardotBaseReport(Base_page):
         full_path = os.path.join(current_directory, json_path)
 
         with open(full_path, 'r') as file:
-            return json.load(file)
+            json_data = json.load(file)
+
+        allure.attach(json.dumps(json_data, indent=2), name='Loaded Entered Data from form',
+                      attachment_type=allure.attachment_type.JSON)
+
+        return json_data

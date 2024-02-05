@@ -15,15 +15,26 @@ class Base_page:
         self.wait = WebDriverWait(self.driver, 10)
 
     @allure.step("Open the page")
+    # def open(self):
+    #     self.driver.get(self.url)
     def open(self):
-        self.driver.get(self.url)
+        try:
+            self.driver.get(self.url)
+        except Exception as e:
+            allure.attach(self.driver.get_screenshot_as_png(), name="Error during opening the page",
+                          attachment_type=allure.attachment_type.PNG)
+            raise e
 
     @allure.step("Close borlabs banner")
     def borlabs_banner_close(self):
-        borlabs_button = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, Button.borlabs))
-        )
-        borlabs_button.click()
+        try:
+            borlabs_button = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, Button.borlabs))
+            )
+            borlabs_button.click()
+        except Exception as e:
+            allure.attach(self.driver.get_screenshot_as_png(), name="Error during closing Borlabs banner",
+                          attachment_type=allure.attachment_type.PNG)
 
     @allure.step("Select random option in dropdown")
     def select_random_option_from_dropdown(self, dropdown_locator, options_locator, selected_option_locator):
