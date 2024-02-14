@@ -61,20 +61,36 @@ class PardotBaseReport(Base_page):
             (gdpr_pardot, expected_gdpr_1 or expected_gdpr_2, "Gdpr_pardot")
         ]
 
+        asserts_results = {}
+
         for value, expected, label in asserts:
+            assert_result = {}
             try:
                 assert value in expected, f"{label}:{value}, expected: {expected}"
+                assert_result = {"status": "Pass", "message": f"{label}: {value} equals {expected}"}
+
+
             except AssertionError as e:
                 print(f"Assertion error in {label}: {e}")
+                assert_result = {"status": "Fail", "message": f"{label}: {value} does not equal {expected}"}
                 allure.attach(self.driver.get_screenshot_as_png(), name=f"Assertion error in {label}",
                               attachment_type=allure.attachment_type.PNG)
                 allure.attach(str(e), name=f"Assertion error message in {label}",
                               attachment_type=allure.attachment_type.TEXT)
+
+            finally:
+                asserts_results[label] = assert_result
+
+        allure.attach(json.dumps(asserts_results, indent=2), name='All Asserts Results',
+                      attachment_type=allure.attachment_type.JSON)
+
     def compare_report_name(self, report_name):
         try:
             report_name_pardot = self.driver.find_element(By.XPATH,
                                                           ReportNamesLocators.report_name_locator).text.strip()
             assert report_name_pardot == report_name, f"Report_name_pardot:{report_name_pardot}, expected_report_name: {report_name}"
+            allure.attach({"Report_name_pardot": report_name_pardot, "expected_report_name": report_name}, name='Report Name Comparison', attachment_type=allure.attachment_type.JSON)
+
         except AssertionError as e:
             print(f"Assertion error in report name comparison: {e}")
 

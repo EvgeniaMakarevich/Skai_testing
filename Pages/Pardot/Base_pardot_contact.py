@@ -20,7 +20,8 @@ class PardotBaseContact(Base_page):
         leads = WebDriverWait(self.driver, 30).until(
             EC.presence_of_all_elements_located((By.XPATH, Form_handler.all_leads)))
         self.scroll_to_element(Form_handler.all_leads)
-        self.driver.execute_script("window.scrollBy(0, -200);")
+        self.driver.execute_script("window.scrollBy(0, 200);")
+        # self.driver.execute_script("window.scrollBy(0, -200);")
         time.sleep(3)
 
 
@@ -101,10 +102,9 @@ class PardotBaseContact(Base_page):
             (other_pardot, expected_other_pardot, "Other_pardot")
         ]
 
+        asserts_results = {}
         for value, expected, label in asserts:
             assert_result = {}
-            asserts_results = {}
-
             try:
                 assert value in expected, f"{label}:{value}, expected: {expected}"
                 assert_result = {"status": "Pass", "message": f"{label}: {value} equals {expected}"}
@@ -121,7 +121,7 @@ class PardotBaseContact(Base_page):
             finally:
                 asserts_results[label] = assert_result
 
-            allure.attach(json.dumps(asserts_results, indent=2), name='Asserts Results',
+        allure.attach(json.dumps(asserts_results, indent=2), name='All Asserts Results',
                           attachment_type=allure.attachment_type.JSON)
 
     @allure.step("Loading JSON data")

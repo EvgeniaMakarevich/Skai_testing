@@ -81,6 +81,11 @@ class Base_page:
         try:
             url_pardot = self.driver.find_element(By.XPATH, pardot_url).text.strip()
             assert expected_url == url_pardot, f"url_pardot: {url_pardot}, expected_url: {expected_url}"
+
+            allure.attach({"URL_pardot": url_pardot, "Expected_Url": expected_url},
+                          name='URL Comparison', attachment_type=allure.attachment_type.JSON)
+
+
         except AssertionError as e:
             print(f"Assertion error in URL comparison: {e}")
 

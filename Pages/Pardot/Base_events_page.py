@@ -77,15 +77,27 @@ class PardotBaseEvent(Base_page):
             # (gdpr_pardot, expected_gdpr_1 or expected_gdpr_2, "Gdpr_pardot")
         ]
 
+        asserts_results = {}
+
         for value, expected, label in asserts:
+            assert_result = {}
             try:
                 assert value in expected, f"{label}:{value}, expected: {expected}"
+                assert_result = {"status": "Pass", "message": f"{label}: {value} equals {expected}"}
+
             except AssertionError as e:
                 print(f"Assertion error in {label}: {e}")
+                assert_result = {"status": "Fail", "message": f"{label}: {value} does not equal {expected}"}
+
                 allure.attach(self.driver.get_screenshot_as_png(), name=f"Assertion error in {label}",
                               attachment_type=allure.attachment_type.PNG)
                 allure.attach(str(e), name=f"Assertion error message in {label}",
                               attachment_type=allure.attachment_type.TEXT)
+            finally:
+                asserts_results[label] = assert_result
+
+        allure.attach(json.dumps(asserts_results, indent=2), name='All Asserts Results',
+                      attachment_type=allure.attachment_type.JSON)
 
     @allure.step("Load JSON data")
     def load_json_data_events(self, json_path):
