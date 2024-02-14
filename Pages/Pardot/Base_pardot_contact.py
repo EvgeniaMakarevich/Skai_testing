@@ -107,12 +107,12 @@ class PardotBaseContact(Base_page):
             assert_result = {}
             try:
                 assert value in expected, f"{label}:{value}, expected: {expected}"
-                assert_result = {"status": "Pass", "message": f"{label}: {value} EQUAL {expected}"}
+                assert_result = {"status": "Passed", "message": f"Pardot {label}: {value} === Expected {label}: {expected}"}
 
             except AssertionError as e:
                 print(f"Assertion error in {label}: {e}")
 
-                assert_result = {"status": "Fail", "message": f"{label}: {value} DOESN'T EQUAL {expected}"}
+                assert_result = {"status": "Failed", "message": f"Pardot{label}: {value} !=== Expected {label}: {expected}"}
 
                 allure.attach(self.driver.get_screenshot_as_png(), name=f"Assertion error in {label}",
                               attachment_type=allure.attachment_type.PNG)
