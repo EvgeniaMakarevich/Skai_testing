@@ -10,6 +10,8 @@ import time
 import allure
 
 
+
+
 class PardotBaseContact(Base_page):
     @allure.step("Compare data")
     def compare_data(self, contact_data):
@@ -100,14 +102,27 @@ class PardotBaseContact(Base_page):
         ]
 
         for value, expected, label in asserts:
+            assert_result = {}
+            asserts_results = {}
+
             try:
                 assert value in expected, f"{label}:{value}, expected: {expected}"
+                assert_result = {"status": "Pass", "message": f"{label}: {value} equals {expected}"}
+
             except AssertionError as e:
                 print(f"Assertion error in {label}: {e}")
+
+                assert_result = {"status": "Fail", "message": f"{label}: {value} does not equal {expected}"}
+
                 allure.attach(self.driver.get_screenshot_as_png(), name=f"Assertion error in {label}",
                               attachment_type=allure.attachment_type.PNG)
                 allure.attach(str(e), name=f"Assertion error message in {label}",
                               attachment_type=allure.attachment_type.TEXT)
+            finally:
+                asserts_results[label] = assert_result
+
+            allure.attach(json.dumps(asserts_results, indent=2), name='Asserts Results',
+                          attachment_type=allure.attachment_type.JSON)
 
     @allure.step("Loading JSON data")
     def load_json_data(self, json_path):
