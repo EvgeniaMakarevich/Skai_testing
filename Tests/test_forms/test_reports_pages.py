@@ -14,9 +14,9 @@ class TestFillReportPages:
     @pytest.mark.parametrize("report_url, fill_method, resource_url, title, description",
                              [("https://skai.io/reports-and-whitepapers/the-hidden-cost-of-advertising-point-solutions/", ReportsPages.fill_hidden_cost, Resource_download_urls.hidden_cost, "Hidden Cost Report", "Fill form of report 'The Hidden Cost of Advertising Point Solutions'"),
                               ("https://skai.io/reports-and-whitepapers/embracing-generative-ai/", ReportsPages.fill_ai, Resource_download_urls.ai, "Generative AI Report", "Fill form of report 'The Next Big Thing: Where Generative AI’s..'"),
-                              ("https://skai.io/reports-and-whitepapers/q4-2023-quarterly-digital-trends-report/", ReportsPages.fill_qtr2023_4, ReportsPages.fill_hidden_cost, 'Q4 2023 Quarterly Trends Report',"Fill form of report 'Q4 2023 Quarterly Trends Report'"),
-                              ("https://skai.io/reports-and-whitepapers/q3-2023-quarterly-digital-trends-report/", ReportsPages.fill_qtr2023_3, ReportsPages.fill_hidden_cost,'Q3 2023 Quarterly Trends Report',"Fill form of report 'Q3 2023 Quarterly Trends Report'"),
-                              ("https://skai.io/reports-and-whitepapers/q2-2023-quarterly-digital-trends-report/", ReportsPages.fill_qtr2023_2, ReportsPages.fill_hidden_cost, 'Q2 2023 Quarterly Trends Report',"Fill form of report 'Q2 2023 Quarterly Trends Report'")])
+                              ("https://skai.io/reports-and-whitepapers/q4-2023-quarterly-digital-trends-report/", ReportsPages.fill_qtr2023_4,Resource_download_urls.qtr2023_4, 'Q4 2023 Quarterly Trends Report',"Fill form of report 'Q4 2023 Quarterly Trends Report'"),
+                              ("https://skai.io/reports-and-whitepapers/q3-2023-quarterly-digital-trends-report/", ReportsPages.fill_qtr2023_3,Resource_download_urls.qtr2023_3,'Q3 2023 Quarterly Trends Report',"Fill form of report 'Q3 2023 Quarterly Trends Report'"),
+                              ("https://skai.io/reports-and-whitepapers/q2-2023-quarterly-digital-trends-report/", ReportsPages.fill_qtr2023_2,Resource_download_urls.qtr2023_2, 'Q2 2023 Quarterly Trends Report',"Fill form of report 'Q2 2023 Quarterly Trends Report'")])
 
 
                               # ("https://skai.io/reports-and-whitepapers/get-prepped-for-prime-day-2023/", ReportsPages.fill_prime_day, Resource_download_urls.prime_day, "Prime Day 2023 Report", "Fill form of report 'Get Prepped for Prime Day 2023'"),

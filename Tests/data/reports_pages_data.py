@@ -64,6 +64,9 @@ class Resource_download_urls:
     prime_day = 'https://skai.io/wp-content/uploads/2023/06/Skai_Prime-Day-2023-Report.pdf'
     amazon_playbook = 'https://skai.io/wp-content/uploads/2023/06/Amazon-Marketing-Cloud_Playbook.pdf'
     apple_ads = 'https://skai.io/wp-content/uploads/2021/03/Mastering-Apple-Search-Ads.pdf'
+    qtr2023_4 = 'https://skai.io/wp-content/uploads/2024/01/2023-Q4-Quarterly-Trends-Report.pdf'
+    qtr2023_3 = 'https://skai.io/wp-content/uploads/2023/10/2023-Q3-Quarterly-Trends-Report.pdf'
+    qtr2023_2 = 'https://skai.io/wp-content/uploads/2023/07/2023-Q2-Skai-QTR-Summary-Report.pdf'
 
 
 
