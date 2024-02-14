@@ -67,12 +67,12 @@ class PardotBaseReport(Base_page):
             assert_result = {}
             try:
                 assert value in expected, f"{label}:{value}, expected: {expected}"
-                assert_result = {"status": "Pass", "message": f"{label}: {value} equals {expected}"}
+                assert_result = {"status": "Pass", "message": f"{label}: {value} EQUALS {expected}"}
 
 
             except AssertionError as e:
                 print(f"Assertion error in {label}: {e}")
-                assert_result = {"status": "Fail", "message": f"{label}: {value} does not equal {expected}"}
+                assert_result = {"status": "Fail", "message": f"{label}: {value} DOESN'T EQUAL {expected}"}
                 allure.attach(self.driver.get_screenshot_as_png(), name=f"Assertion error in {label}",
                               attachment_type=allure.attachment_type.PNG)
                 allure.attach(str(e), name=f"Assertion error message in {label}",
@@ -89,7 +89,11 @@ class PardotBaseReport(Base_page):
             report_name_pardot = self.driver.find_element(By.XPATH,
                                                           ReportNamesLocators.report_name_locator).text.strip()
             assert report_name_pardot == report_name, f"Report_name_pardot:{report_name_pardot}, expected_report_name: {report_name}"
-            allure.attach({"Report_name_pardot": report_name_pardot, "expected_report_name": report_name}, name='Report Name Comparison', attachment_type=allure.attachment_type.JSON)
+            allure.attach(
+
+            json.dumps({"Report_name_pardot": report_name_pardot, "expected_report_name": report_name}, indent=2).encode(
+                    'utf-8'), name='Report Name Comparison', attachment_type=allure.attachment_type.JSON)
+
 
         except AssertionError as e:
             print(f"Assertion error in report name comparison: {e}")

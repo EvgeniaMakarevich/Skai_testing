@@ -5,6 +5,7 @@ import random
 from Tests.locators.contact_page_locators import Button
 import time
 import allure
+import json
 
 
 class Base_page:
@@ -82,8 +83,9 @@ class Base_page:
             url_pardot = self.driver.find_element(By.XPATH, pardot_url).text.strip()
             assert expected_url == url_pardot, f"url_pardot: {url_pardot}, expected_url: {expected_url}"
 
-            allure.attach({"URL_pardot": url_pardot, "Expected_Url": expected_url},
-                          name='URL Comparison', attachment_type=allure.attachment_type.JSON)
+            allure.attach(
+                json.dumps({"URL_pardot": url_pardot, "Expected_Url": expected_url}, indent=2).encode('utf-8'),
+                name='URL Comparison', attachment_type=allure.attachment_type.JSON)
 
 
         except AssertionError as e:
