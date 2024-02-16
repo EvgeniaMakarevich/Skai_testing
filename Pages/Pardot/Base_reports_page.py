@@ -8,6 +8,7 @@ from Pages.Base_page import Base_page
 from Tests.locators.pardot_locators import Contact_pardot, Form_handler
 from Tests.locators.reports_locators import ReportNamesLocators
 import allure
+import time
 
 class PardotBaseReport(Base_page):
     def compare_data(self, contact_data):
