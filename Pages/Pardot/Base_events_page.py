@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from Pages.Base_page import Base_page
 from Tests.locators.pardot_locators import Contact_pardot, Form_handler
 import allure
+import time
 
 
 class PardotBaseEvent(Base_page):
@@ -15,6 +16,9 @@ class PardotBaseEvent(Base_page):
 
         leads = WebDriverWait(self.driver, 30).until(
             EC.visibility_of_all_elements_located((By.XPATH, Form_handler.all_leads)))
+
+        self.scroll_to_element(Form_handler.all_leads)
+        time.sleep(3)
 
         entered_name = f"{contact_data['name']} {contact_data['last_name']}"
 
