@@ -135,6 +135,7 @@ jobs:
   test_contact_pardot:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    needs: download-history
 
     steps:
       - name: Checkout repository
@@ -164,6 +165,7 @@ jobs:
   test_report_pardot:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    needs: download-history
 
     steps:
       - name: Checkout repository
@@ -195,6 +197,7 @@ jobs:
   test_sem_pardot:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    needs: download-history
 
     steps:
       - name: Checkout repository
@@ -225,6 +228,7 @@ jobs:
   test_event_pardot:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    needs: download-history
 
     steps:
       - name: Checkout repository
