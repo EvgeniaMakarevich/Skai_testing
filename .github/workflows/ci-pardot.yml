@@ -83,7 +83,7 @@ permissions:
 
 
 jobs:
- download-history:
+  download-history:
    runs-on: ubuntu-latest
    name: Download history
    steps:
@@ -132,7 +132,7 @@ jobs:
          retention-days: 1
 
 
-test_contact_pardot:
+  test_contact_pardot:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
