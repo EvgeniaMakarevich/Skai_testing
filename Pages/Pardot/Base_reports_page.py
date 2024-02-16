@@ -17,8 +17,8 @@ class PardotBaseReport(Base_page):
         leads = WebDriverWait(self.driver, 30).until(
             EC.visibility_of_all_elements_located((By.XPATH, Form_handler.all_leads)))
 
-        self.scroll_to_element(Form_handler.all_leads)
-        self.driver.execute_script("window.scrollBy(0, -200);")
+        # self.scroll_to_element(Form_handler.all_leads)
+        # self.driver.execute_script("window.scrollBy(0, -200);")
         time.sleep(3)
 
         entered_name = f"{contact_data['name']} {contact_data['last_name']}"
