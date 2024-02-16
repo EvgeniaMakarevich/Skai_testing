@@ -129,7 +129,7 @@ jobs:
          name: allure-results-pardot
          path:
            allure-results-pardot
-         retention-days: 1
+         retention-days: never
 
 
   test_contact_pardot:
@@ -158,7 +158,7 @@ jobs:
           name: allure-results-pardot
           path:
             allure-results-pardot
-          retention-days: 1
+          retention-days: never
 
 
   # test_report_pardot:
@@ -276,7 +276,7 @@ jobs:
           name: _site
           path:
             _site
-          retention-days: 1
+          retention-days: never
 
   publish-report:
     runs-on: ubuntu-latest
