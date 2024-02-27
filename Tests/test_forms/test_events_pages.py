@@ -15,6 +15,9 @@ class TestFillEventPages:
                              [
                                  (Urls.media_roundtable_url, EventsPages.fill_media_roundtable, "Media Leaders Roundtable Event Page",
                                   "Fill form of Event page 'Media Leaders Roundtable'"),
+                                 (Urls.idervie_url, EventsPages.fill_iDerive,
+                                  "iDerive Event Page",
+                                  "Fill form of Event page 'iDerive'")
                              ])
     def test_fill_event_pages(self, driver, url, fill_method, title, description):
         allure.dynamic.title(title)
@@ -25,5 +28,5 @@ class TestFillEventPages:
         event.borlabs_banner_close()
         fill_method(event)
 
-        # event.submit_form(locators.submit_button)
-        # assert driver.current_url.startswith(Urls.thankyou), 'Incorrect URL'
+        event.submit_form(locators.submit_button)
+        assert driver.current_url.startswith(Urls.thankyou), 'Incorrect URL'

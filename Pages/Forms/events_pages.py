@@ -59,3 +59,7 @@ class EventsPages(BaseEventPage):
     @allure.step("Fill the event form: Inspiring Dining: Media Leaders Roundtable")
     def fill_media_roundtable(self):
         self.fill_report_form_and_save('entered_data_media_roundtable_event.json', Json_path.media_roundtable_event)
+
+    @allure.step("eTail Happy Hour with iDerive & Skai")
+    def fill_iDerive(self):
+        self.fill_report_form_and_save('entered_data_iderive_event.json', Json_path.iderive_event)
