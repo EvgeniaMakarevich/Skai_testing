@@ -20,7 +20,7 @@ class PardotBaseContact(Base_page):
         leads = WebDriverWait(self.driver, 30).until(
             EC.presence_of_all_elements_located((By.XPATH, Form_handler.all_leads)))
         self.scroll_to_element(Form_handler.all_leads)
-        self.driver.execute_script("window.scrollBy(0, 300);")
+        # self.driver.execute_script("window.scrollBy(0, 300);")
         # self.driver.execute_script("window.scrollBy(0, -200);")
         time.sleep(3)
 
