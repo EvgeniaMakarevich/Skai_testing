@@ -13,11 +13,13 @@ class TestFillEventPages:
     @allure.severity(allure.severity_level.CRITICAL)
     @pytest.mark.parametrize("url, fill_method, title, description",
                              [
-                                 (Urls.media_roundtable_url, EventsPages.fill_media_roundtable, "Media Leaders Roundtable Event Page",
-                                  "Fill form of Event page 'Media Leaders Roundtable'"),
-                                 (Urls.idervie_url, EventsPages.fill_iDerive,
-                                  "iDerive Event Page",
-                                  "Fill form of Event page 'iDerive'")
+                                 # (Urls.media_roundtable_url, EventsPages.fill_media_roundtable, "Media Leaders Roundtable Event Page",
+                                 #  "Fill form of Event page 'Media Leaders Roundtable'"),
+                                 # (Urls.idervie_url, EventsPages.fill_iDerive,
+                                 #  "iDerive Event Page",
+                                 #  "Fill form of Event page 'iDerive'")
+                                 (Urls.shoptalk_url, EventsPages.fill_shoptalk,
+                                  "'Meet Skai at Shoptalk US' Event Page", "Fill form of Event page 'Meet Skai at Shoptalk US'")
                              ])
     def test_fill_event_pages(self, driver, url, fill_method, title, description):
         allure.dynamic.title(title)

@@ -2,6 +2,10 @@ from Pages.Forms.base_event_page import BaseEventPage
 from Tests.locators.events_locators import EventFormLocators
 from Tests.data.events_pages_data import Json_path
 import allure
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
 
 locators = EventFormLocators()
 
@@ -9,8 +13,8 @@ class EventsPages(BaseEventPage):
 
     # GENERAL FUNCTIONS
     @allure.step("Fill the form fields")
-    def fill_form_fields(self):
-        self.fill_form(
+    def fill_form_fields_1(self):
+        self.fill_form_1(
             locators.first_name,
             locators.last_name,
             locators.email,
@@ -21,6 +25,19 @@ class EventsPages(BaseEventPage):
             locators.state, locators.state_options,locators.selected_option_state,
             locators.dietary_req
         )
+
+    @allure.step("Fill the form fields")
+    def fill_form_fields_2(self):
+        self.fill_form_2(
+            locators.first_name,
+            locators.last_name,
+            locators.email,
+            locators.company,
+            locators.job_title,
+            locators.what_interested_in, locators.what_interested_in_options, locators.selected_option_what_interested_in,
+            locators.what_to_discuss
+        )
+
 
     @allure.step("Select the checkbox 'Privacy Policy'")
     def select_checkbox_step(self):
@@ -48,18 +65,32 @@ class EventsPages(BaseEventPage):
             raise e
 
 
-    def fill_report_form_and_save(self, json_filename, json_destination_path):
-        self.fill_form_fields()
+    def fill_event_form_and_save_1(self, json_filename, json_destination_path):
+        self.fill_form_fields_1()
         self.select_checkbox_step()
         self.select_checkbox_step_2()
-        self.get_and_save_entered_report_data(json_filename, json_destination_path)
+        self.get_and_save_entered_report_data_1(json_filename, json_destination_path)
+
+
+    def fill_event_form_and_save_2(self, json_filename, json_destination_path):
+        self.fill_form_fields_2()
+        self.select_checkbox_step()
+        self.select_checkbox_step_2()
+        self.get_and_save_entered_report_data_2(json_filename, json_destination_path)
 
 
     # FUNCTION FOR FILLING EACH REPORT FORM
     @allure.step("Fill the event form: Inspiring Dining: Media Leaders Roundtable")
     def fill_media_roundtable(self):
-        self.fill_report_form_and_save('entered_data_media_roundtable_event.json', Json_path.media_roundtable_event)
+        self.fill_event_form_and_save_1('entered_data_media_roundtable_event.json', Json_path.media_roundtable_event)
 
     @allure.step("eTail Happy Hour with iDerive & Skai")
     def fill_iDerive(self):
-        self.fill_report_form_and_save('entered_data_iderive_event.json', Json_path.iderive_event)
+        self.fill_event_form_and_save_1('entered_data_iderive_event.json', Json_path.iderive_event)
+
+    @allure.step("Meet Skai at Shoptalk US")
+    def fill_shoptalk(self):
+        self.scroll_to_element(locators.form_locator)
+        time.sleep(3)
+
+        self.fill_event_form_and_save_2('entered_data_shoptalk_event.json', Json_path.shoptalk_event)

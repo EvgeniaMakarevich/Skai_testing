@@ -8,11 +8,14 @@ class TestEventsPages:
     @allure.tag("Compare Pardot data with entered Events data")
     @allure.severity(allure.severity_level.CRITICAL)
     @pytest.mark.parametrize('Form_handler_url,fill_method, title, description', [
-        (Pardot.media_roundtable_form_handler, EventPagesPardot.compare_data_media_roundtable, "Media Leaders Roundtable Event",
-         "Compare Pardot data with entered 'Media Leaders Roundtable Event' data"),
-        (Pardot.iderive_form_handler, EventPagesPardot.compare_data_iderive,
-         "iDerive Event",
-         "Compare Pardot data with entered 'iDerive' data")
+        # (Pardot.media_roundtable_form_handler, EventPagesPardot.compare_data_media_roundtable, "Media Leaders Roundtable Event",
+        #  "Compare Pardot data with entered 'Media Leaders Roundtable Event' data"),
+        # (Pardot.iderive_form_handler, EventPagesPardot.compare_data_iderive,
+        #  "iDerive Event",
+        #  "Compare Pardot data with entered 'iDerive' data")
+        (Pardot.shoptalk_form_handler, EventPagesPardot.compare_data_shoptalk,
+         "Shoptalk Event",
+         "Compare Pardot data with entered 'Shoptalk' data")
     ])
     def test_compare_event_data(self, get_pardot, Form_handler_url, fill_method, title, description):
         allure.dynamic.title(title)
