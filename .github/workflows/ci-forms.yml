@@ -1,4 +1,4 @@
-name: Run Tests on Forms
+name: Run Tests on Forms and Pardot
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
       deployment_target:
         description: Choose target
         required: true
-        default: Fill_forms
+        default: Run Tests
         type: string
 
 permissions:

@@ -1,9 +1,18 @@
 name: Run Tests on Pardot
 
+#on:
+#  push:
+#    paths:
+#      - 'Tests/data/pardot_data.py'
+
 on:
-  push:
-    paths:
-      - 'Tests/data/pardot_data.py'
+  workflow_dispatch:
+    inputs:
+      deployment_target:
+        description: Choose target
+        required: true
+        default: Check pardot data
+        type: string
 
 permissions:
   contents: write
