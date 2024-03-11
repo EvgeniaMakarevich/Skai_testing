@@ -13,6 +13,7 @@ permissions:
 
 jobs:
   download-history:
+   needs: test
    runs-on: ubuntu-latest
    name: Download history
    steps:
@@ -62,6 +63,7 @@ jobs:
 
 
   test_contact_pardot:
+    needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 20
     # needs: download-history
@@ -92,6 +94,7 @@ jobs:
 
 
   test_report_pardot:
+   needs: test
    runs-on: ubuntu-latest
    timeout-minutes: 30
    # needs: download-history
@@ -124,6 +127,7 @@ jobs:
          retention-days: 90
 
   test_sem_pardot:
+    needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 30
     # needs: download-history
@@ -155,6 +159,7 @@ jobs:
           retention-days: 90
 
   test_event_pardot:
+   needs: test
    runs-on: ubuntu-latest
    timeout-minutes: 30
    # needs: download-history

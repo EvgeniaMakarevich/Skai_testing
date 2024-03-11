@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
+from pyotp import *
 
 
 @pytest.fixture(scope='session')
@@ -35,7 +36,12 @@ def get_pardot(browser):
     browser.find_element(By.XPATH, Pardot_locators.password).send_keys(Pardot_data.password_data)
 
     browser.find_element(By.XPATH, Pardot_locators.log_in).click()
-    WebDriverWait(browser,10).until(EC.visibility_of_element_located((By.XPATH, Pardot_locators.verification_field))).send_keys(Pardot_data.verification_code)
+
+    time.sleep(3)
+    totp = TOTP("5QX3JE346ENTQ736UE2EUD3JPPGLB6TU")
+    token = totp.now()
+
+    WebDriverWait(browser,10).until(EC.visibility_of_element_located((By.XPATH, Pardot_locators.verification_field))).send_keys(token)
     browser.find_element(By.XPATH, Pardot_locators.save_button).click()
 
     browser.get(Pardot_data.log_in_page)
