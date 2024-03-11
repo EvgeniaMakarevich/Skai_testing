@@ -1,4 +1,4 @@
-name: Run Tests on Filling Forms
+name: Run Tests on Forms
 
 on:
   workflow_dispatch:
@@ -63,7 +63,7 @@ jobs:
   #          allure-results-pardot
   #        retention-days: 90
 
-  test:
+  fill_forms:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     # needs: download-history
@@ -102,13 +102,13 @@ jobs:
       - name: Store allure results
         uses: actions/upload-artifact@v3
         with:
-          name: allure-results-pardot
+          name: allure-results
           path:
             allure-results-pardot
           retention-days: 1
 
-  test_pardot:
-    needs: test
+  check_pardot_data:
+    needs: fill_forms
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
@@ -139,17 +139,19 @@ jobs:
 
   generate-report:
     runs-on: ubuntu-latest
-    needs: test
+    needs:
+    - fill_forms
+    - check_pardot_data
     name: Generate report
     steps:
       - uses: actions/setup-java@v3
         with:
-          distribution: 'microsoft' # See 'Supported distributions' for available options
+          distribution: 'microsoft'
           java-version: '17'
       - run: sudo wget https://github.com/allure-framework/allure2/releases/download/2.23.1/allure-2.23.1.tgz && sudo tar -zxvf allure-2.23.1.tgz -C /opt/ && sudo ln -s /opt/allure-2.23.1/bin/allure /usr/bin/allure
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
-      - run: allure generate -c allure-results-pardot -o _site
+      - run: allure generate -c allure-results allure-results-pardot -o _site
       - name: Store generated report
         uses: actions/upload-artifact@v3
         with:
