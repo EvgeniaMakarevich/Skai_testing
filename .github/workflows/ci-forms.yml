@@ -87,7 +87,7 @@ jobs:
 #        uses: actions/download-artifact@v3
 
       - name: Fill_forms
-        run: pytest -s -v Tests/test_forms/test_contact_page.py --alluredir=allure-results-pardot
+        run: pytest -s -v Tests/test_forms --alluredir=allure-results-pardot
         continue-on-error: true
 
       - name: Commit JSON data changes
@@ -124,7 +124,7 @@ jobs:
       - name: Install requirements
         run: pip install -r requirements.txt
 
-      - name: Run tests Contact Page
+      - name: Check Pardot Data
         run: pytest -s -v Tests/test_pardot --alluredir=allure-results-pardot
         continue-on-error: true
 
@@ -149,6 +149,8 @@ jobs:
           distribution: 'microsoft'
           java-version: '17'
       - run: sudo wget https://github.com/allure-framework/allure2/releases/download/2.23.1/allure-2.23.1.tgz && sudo tar -zxvf allure-2.23.1.tgz -C /opt/ && sudo ln -s /opt/allure-2.23.1/bin/allure /usr/bin/allure
+      - name: Remove old Allure results
+        run: rm -rf allure-results
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
       - run: allure generate -c allure-results allure-results-pardot -o _site

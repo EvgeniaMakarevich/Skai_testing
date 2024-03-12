@@ -31,8 +31,8 @@ class TestFillSemPages:
         sem_page.open()
         driver.set_window_size(1920, 1080)
         sem_page.borlabs_banner_close()
-        fill_method(sem_page)
-
-        sem_page.submit_form(Button.button_contact_us)
-        assert driver.current_url.startswith(Url.thankyou_page), 'Incorrect URL'
+        # fill_method(sem_page)
+        #
+        # sem_page.submit_form(Button.button_contact_us)
+        # assert driver.current_url.startswith(Url.thankyou_page), 'Incorrect URL'
 

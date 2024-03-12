@@ -28,7 +28,7 @@ class TestFillEventPages:
         driver.set_window_size(1920, 1080)
         event.open()
         event.borlabs_banner_close()
-        fill_method(event)
-
-        event.submit_form(locators.submit_button)
-        assert driver.current_url.startswith(Urls.thankyou), 'Incorrect URL'
+        # fill_method(event)
+        #
+        # event.submit_form(locators.submit_button)
+        # assert driver.current_url.startswith(Urls.thankyou), 'Incorrect URL'

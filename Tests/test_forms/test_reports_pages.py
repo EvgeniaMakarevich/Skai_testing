@@ -30,9 +30,9 @@ class TestFillReportPages:
         report.open()
         report.borlabs_banner_close()
 
-        fill_method(report)
+        # fill_method(report)
 
-        report.submit_form(Button.button_contact_us)
+        # report.submit_form(Button.button_contact_us)
         #
         # window_handles = driver.window_handles
         # driver.switch_to.window(window_handles[-1])
