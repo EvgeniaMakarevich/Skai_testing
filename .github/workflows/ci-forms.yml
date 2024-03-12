@@ -87,7 +87,7 @@ jobs:
 #        uses: actions/download-artifact@v3
 
       - name: Fill_forms
-        run: pytest -s -v Tests/test_forms --alluredir=allure-results-pardot
+        run: pytest -s -v Tests/test_forms/test_contact_page.py --alluredir=allure-results-pardot
         continue-on-error: true
 
       - name: Commit JSON data changes
