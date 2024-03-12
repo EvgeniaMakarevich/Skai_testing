@@ -10,6 +10,7 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from pyotp import *
+import allure
 
 
 @pytest.fixture(scope='session')
@@ -27,7 +28,7 @@ def browser(options):
     yield browser
     browser.quit()
 
-
+@allure.step('Login')
 @pytest.fixture(scope='session')
 # @pytest.fixture(scope='function')
 def get_pardot(browser):
