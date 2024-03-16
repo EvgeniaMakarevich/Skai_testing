@@ -39,7 +39,7 @@ def get_pardot(browser):
     browser.find_element(By.XPATH, Pardot_locators.log_in).click()
 
     time.sleep(3)
-    totp = TOTP("5QX3JE346ENTQ736UE2EUD3JPPGLB6TU")
+    totp = TOTP("")
     token = totp.now()
 
     WebDriverWait(browser,10).until(EC.visibility_of_element_located((By.XPATH, Pardot_locators.verification_field))).send_keys(token)
